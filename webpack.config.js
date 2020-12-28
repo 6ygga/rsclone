@@ -1,7 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 // Require  html-webpack-plugin plugin
 module.exports = {
-  entry: `${__dirname}/js/index.js`, // webpack entry point. Module to start building dependency graph
+  entry: `${__dirname}/src/js/index.js`, // webpack entry point. Module to start building dependency graph
   output: {
     path: `${__dirname}/dist`, // Folder to store generated bundle
     filename: 'bundle.js', // Name of generated bundle after build
@@ -46,6 +47,7 @@ module.exports = {
       template: `${__dirname}/index.html`,
       inject: 'body',
     }),
+    new FaviconsWebpackPlugin(`${__dirname}/src/assets/images/favicon.ico`),
   ],
   devServer: { // configuration for webpack-dev-server
     contentBase: './public', // source of static assets

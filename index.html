@@ -6,9 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>COVID Dashboard</title>
+    <title>rsclone</title>
 </head>
 <body>
-    <div id="data"></div>
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="#" onclick="onNavigate('/about'); return false;">About</a></li>
+    <li class="navbar-item"><a href="#" onclick="onNavigate('/'); return false;">Home</a></li>
+    <li class="navbar-item"><a href="#" onclick="onNavigate('/contact'); return false;">Contact</a></li>
+  </ul>
+<div id="root"></div>
 </body>
 </html>
