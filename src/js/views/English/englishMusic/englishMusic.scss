@@ -51,6 +51,13 @@ body{
   box-shadow: 1px 0px 20px 12px rgba(240,240,240,0.2);
 }
 
+.block-right__track-image{
+  height: 250px;
+  width: 50%;
+  border-radius: 15px;
+  box-shadow: 1px 0px 20px 12px rgba(240,240,240,0.2);
+}
+
 input[type="range"]{
   -webkit-appearance: none;
   width: 50%;
@@ -90,6 +97,8 @@ input[type="range"]::-webkit-slider-thumb{
 .volume__icon{
   cursor: pointer;
   padding: 8px 12px;
+  width: 20px;
+  text-align: center;
 }
 
 .volume__icon:hover {
@@ -99,7 +108,9 @@ input[type="range"]::-webkit-slider-thumb{
 .volume__show{
   padding: 8px 12px;
   margin-right: 5px;
-  background-color: rgba(255,255,255,0.4)
+  background-color: rgba(255,255,255,0.4);
+  width: 20px;
+  text-align: center;
 }
 
 .block-right__panel{
@@ -107,6 +118,7 @@ input[type="range"]::-webkit-slider-thumb{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
 .block-right__panel button{
@@ -135,7 +147,7 @@ input[type="range"]::-webkit-slider-thumb{
 
 .block-right__duration {
   position: absolute;
-  bottom: 20%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

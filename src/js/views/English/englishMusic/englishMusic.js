@@ -1,4 +1,5 @@
 import './englishMusic.scss';
+import EnglishMusicController from './englishMusicController';
 
 export default class EnglishMusic {
   constructor() {
@@ -16,6 +17,8 @@ export default class EnglishMusic {
     this.createLogo();
     this.createLeftBlock();
     this.createRightBlock();
+    const englishMusicController = new EnglishMusicController();
+    englishMusicController.init();
   }
 
   createLogo() {
@@ -29,11 +32,13 @@ export default class EnglishMusic {
     this.leftBlock = document.createElement('div');
     this.leftBlock.classList.add('musicContainer__block-left');
     this.leftBlock.innerHTML = `
-      <img class = 'block-left__track-image'>
+      <div class ='block-left__canvas'>
+        <canvas id="canvas__visual"></canvas>
+      </div>
       <div class = 'block-left__volume'>
-      <p class = 'volume__show'>90</p>
+      <p class = 'volume__show'>100</p>
       <i class="fa fa-volume-up volume__icon" aria-hidden="true"></i>
-      <input type = 'range' min = '0' max = '100' value = '90'>
+      <input type = 'range' min = '0' max = '100' value = '100' id = 'volume'>
       </div>
     `;
     this.musicContainer.appendChild(this.leftBlock);
@@ -49,6 +54,7 @@ export default class EnglishMusic {
         <p class = 'show-song__total'>10</p>
       </div>
       <p class = 'block-right__song-title'>title.mp3</p>
+      <img class = 'block-right__track-image'>
       <div class = 'block-right__panel'>
         <button class = 'panel__pre'> <i class="fa fa-step-backward" aria-hidden="true"></i></button>
         <button class = 'panel__play'><i class="fa fa-play" aria-hidden="true"></i></button>

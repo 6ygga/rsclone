@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // Require  html-webpack-plugin plugin
 module.exports = {
   entry: `${__dirname}/src/js/index.js`, // webpack entry point. Module to start building dependency graph
@@ -28,13 +29,13 @@ module.exports = {
           'sass-loader',
         ],
       },
-      {
+      /* {
         test: /\.(jpg|mp3|svg|png)$/,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]',
+          name: `./src/assets/images/[name].[ext]`,
         },
-      },
+      }, */
       {
         enforce: 'pre',
         test: /\.js$/,
@@ -48,6 +49,12 @@ module.exports = {
       inject: 'body',
     }),
     new FaviconsWebpackPlugin(`${__dirname}/src/assets/images/favicon.ico`),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./src/assets/images", to: "assets/images" },
+        { from: "./src/assets/music", to: "assets/music" },
+      ],
+    }),
   ],
   devServer: { // configuration for webpack-dev-server
     contentBase: './public', // source of static assets

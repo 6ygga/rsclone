@@ -1,188 +1,153 @@
-const previous = document.querySelector('.panel__pre');
-const play = document.querySelector('.panel__play');
-const next = document.querySelector('.panel__next');
-const title = document.querySelector('.block-right__song-title');
-const recentVolume = document.querySelector('.block-left__volume');
-const volumeShow = document.querySelector('.volume__show');
-const volumeIcon = document.querySelector('.volume__icon');
-const slider = document.querySelector('.duration__slider');
-// const showDuration = document.querySelector('.show_duration');
-const trackImage = document.querySelector('.block-left__track-image');
-const autoPlay = document.querySelector('.block-right__auto');
-const present = document.querySelector('.show-song__present');
-const total = document.querySelector('.show-song__total');
+import allSong from '../../../models/audioData';
 
-let timer;
-let autoplay = 0;
+export default class englishMusicController {
+  constructor() {
+    this.previous = document.querySelector('.panel__pre');
+    this.play = document.querySelector('.panel__play');
+    this.next = document.querySelector('.panel__next');
+    this.title = document.querySelector('.block-right__song-title');
+    this.recentVolume = document.querySelector('#volume');
+    this.volumeShow = document.querySelector('.volume__show');
+    this.volumeIcon = document.querySelector('.volume__icon');
+    this.slider = document.querySelector('.duration__slider');
+    this.canvas = document.getElementById('canvas__visual');
+    this.trackImage = document.querySelector('.block-right__track-image');
+    this.autoPlay = document.querySelector('.block-right__auto');
+    this.present = document.querySelector('.show-song__present');
+    this.total = document.querySelector('.show-song__total');
 
-let index = 0;
-let playingSong = false;
+    this.mute = false;
+    this.timer = null;
+    this.autoplay = 0;
+    this.index = 0;
+    this.playingSong = false;
+    this.track = document.createElement('audio');
+  }
 
-const track = document.createElement('audio');
+  resetSlider() {
+    this.slider.value = 0;
+  }
 
-const allSong = [
-  {
-    name: 'The ABC song',
-    path: 'assets/music/The ABC Song.mp3',
-    img: 'assets/images/ABC Song.jpg',
-  },
-  {
-    name: 'I see something blue',
-    path: 'assets/music/I See Something Blue.mp3',
-    img: 'assets/images/I See Something Blue.jpg',
-  },
-  {
-    name: "If you're happy",
-    path: "assets/music/If You're Happy.mp3",
-    img: "assets/images/If You're Happy.jpg",
-  },
-  {
-    name: 'One little finger',
-    path: 'assets/music/One Little Finger.mp3',
-    img: 'assets/images/One Little Finger.jpg',
-  },
-  {
-    name: 'Put on your shoes',
-    path: 'assets/music/Put On Your Shoes.mp3',
-    img: 'assets/images/Put On Your Shoes.jpg',
-  },
-  {
-    name: 'Rain rain go away',
-    path: 'assets/music/Rain Rain Go Away.mp3',
-    img: 'assets/images/Rain rain go away.jpg',
-  },
-  {
-    name: 'Ten in a bed',
-    path: 'assets/music/Ten in a Bed.mp3',
-    img: 'assets/images/Ten in a bed.jpg',
-  },
-  {
-    name: 'The animals on the farm',
-    path: 'assets/music/The Animals On The Farm.mp3',
-    img: 'assets/images/The animals on the farm.jpg',
-  },
-  {
-    name: 'The greetings song',
-    path: 'assets/music/The Greetings Song.mp3',
-    img: 'assets/images/The greetings song.jpg',
-  },
-  {
-    name: 'Twinkle twinkle little star',
-    path: 'assets/music/Twinkle Twinkle Little Star.mp3',
-    img: 'assets/images/Twinkle Twinkle Little Star.jpg',
-  },
-];
-function resetSlider() {
-  slider.value = 0;
-}
+  loadTrack(number) {
+    clearInterval(this.timer);
+    this.resetSlider();
 
-function rangeSlider() {
-let position = 0;
-if (!isNaN(track.duration)) {
-position = track.currentTime * (100 / track.duration);
-slider.value = position;
-}
+    this.track.src = allSong[number].path;
+    this.title.innerHTML = allSong[number].name;
+    this.trackImage.src = allSong[number].img;
+    this.track.load();
 
-if (track.ended) {
-play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-if (autoplay == 1) {
-  index += 1;
-  loadTrack(index);
-  playSong();
-}
-}
-}
+    this.timer = setInterval(this.rangeSlider.bind(this), 1000);
+    this.total.innerHTML = allSong.length;
+    this.present.innerHTML = number + 1;
+  }
 
-function loadTrack(number) {
-  clearInterval(timer);
-  resetSlider();
+  playSong() {
+    this.track.play();
+    this.playingSong = true;
+    this.play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
+  }
 
-  track.src = allSong[number].path;
-  title.innerHTML = allSong[number].name;
-  trackImage.src = allSong[number].img;
-  track.load();
+  rangeSlider() {
+    let position = 0;
+    if (!isNaN(this.track.duration)) {
+      position = this.track.currentTime * (100 / this.track.duration);
+      this.slider.value = position;
+    }
 
-  timer = setInterval(rangeSlider, 1000);
-  total.innerHTML = allSong.length;
-  present.innerHTML = number + 1;
-}
+    if (this.track.ended) {
+      this.play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+      if (this.autoplay === 1) {
+        this.index += 1;
+        this.loadTrack(this.index);
+        this.playSong();
+      }
+    }
+  }
 
-loadTrack(index);
+  muteSound() {
+    this.mute = !this.mute;
+    if (this.mute) {
+      localStorage.setItem('volume', this.track.volume);
+      this.track.volume = 0;
+      this.volumeShow.innerHTML = 0;
+      this.volumeIcon.classList.remove('fa-volume-up');
+      this.volumeIcon.classList.add('fa-volume-off');
+    } else {
+      this.track.volume = localStorage.getItem('volume');
+      this.volumeShow.innerHTML = this.track.volume * 100;
+      this.volumeIcon.classList.add('fa-volume-up');
+      this.volumeIcon.classList.remove('fa-volume-off');
+    }
+  }
 
-function muteSound() {
-  track.volume = 0;
-  // volume.value = 0;
-  volumeShow.innerHTML = 0;
-}
+  pauseSong() {
+    this.track.pause();
+    this.playingSong = false;
+    this.play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+  }
 
-function justPlay() {
-  if (playingSong === false) {
-    playSong();
-  } else {
-    pauseSong();
+  justPlay() {
+    if (this.playingSong === false) {
+      this.playSong();
+    } else {
+      this.pauseSong();
+    }
+  }
+
+  nextSong() {
+    if (this.index < allSong.length - 1) {
+      this.index += 1;
+      this.loadTrack(this.index);
+      this.playSong();
+    } else {
+      this.index = 0;
+      this.loadTrack(this.index);
+      this.playSong();
+    }
+  }
+
+  previousSong() {
+    if (this.index > 0) {
+      this.index -= 1;
+      this.loadTrack(this.index);
+      this.playSong();
+    } else {
+      this.index = allSong.length - 1;
+      this.loadTrack(this.index);
+      this.playSong();
+    }
+  }
+
+  volumeChange() {
+    this.mute = false;
+    this.volumeShow.innerHTML = this.recentVolume.value;
+    this.track.volume = this.recentVolume.value / 100;
+  }
+
+  changeDuration() {
+    const sliderPosition = this.track.duration * (this.slider.value / 100);
+    this.track.currentTime = sliderPosition;
+  }
+
+  autoPlaySwitch() {
+    if (this.autoplay === 1) {
+      this.autoplay = 0;
+      this.autoPlay.style.background = 'rgba(255,255,255,0.2)';
+    } else {
+      this.autoplay = 1;
+      this.autoPlay.style.background = '#FF8A65';
+    }
+  }
+
+  init() {
+    this.volumeIcon.addEventListener('click', this.muteSound.bind(this));
+    this.recentVolume.addEventListener('change', this.volumeChange.bind(this));
+    this.previous.addEventListener('click', this.previousSong.bind(this));
+    this.play.addEventListener('click', this.justPlay.bind(this));
+    this.next.addEventListener('click', this.nextSong.bind(this));
+    this.slider.addEventListener('change', this.changeDuration.bind(this));
+    this.autoPlay.addEventListener('click', this.autoPlaySwitch.bind(this));
+    this.loadTrack(this.index);
   }
 }
-
-function playSong() {
-  track.play();
-  playingSong = true;
-  play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
-}
-
-function pauseSong() {
-  track.pause();
-  playingSong = false;
-  play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
-}
-
-function nextSong() {
-  if (index < allSong.length - 1) {
-    index += 1;
-    loadTrack(index);
-    playSong();
-  } else {
-    index = 0;
-    loadTrack(index);
-    playSong();
-  }
-}
-
-function previousSong() {
-  if (index > 0) {
-    index -= 1;
-    loadTrack(index);
-    playSong();
-  } else {
-    index = allSong.length;
-    loadTrack(index);
-    playSong();
-  }
-}
-
-function volumeChange() {
-  volumeShow.innerHTML = recentVolume.value;
-  track.volume = recentVolume.value / 100;
-}
-
-function changeDuration() {
-  sliderPosition = track.duration * (slider.value / 100);
-  track.currentTime = slider_position;
-}
-
-function autoPlaySwitch() {
-  if (autoplay == 1) {
-    autoplay = 0;
-    autoPlay.style.background = 'rgba(255,255,255,0.2)';
-  } else {
-    autoplay = 1;
-    autoPlay.style.background = '#FF8A65';
-  }
-}
-
-volumeIcon.addEventListener('click', muteSound);
-recentVolume.addEventListener('change', volumeChange);
-previous.addEventListener('click', previousSong);
-play.addEventListener('click', justPlay);
-next.addEventListener('click', nextSong);
-slider.addEventListener('change', changeDuration);
-autoPlay.addEventListener('click', autoPlaySwitch);
