@@ -15,6 +15,5 @@ module.exports = {
     'linebreak-style': ['error', 'windows'],
     'class-methods-use-this': 'off',
     'no-restricted-globals': ['error', 'event', 'fdescribe'],
-    'no-use-before-define': ['error', { functions: false, classes: true }],
   },
 };
