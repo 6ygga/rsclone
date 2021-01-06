@@ -1,4 +1,4 @@
-import allSong from '../../../models/audioData';
+import allSong from '../../models/audioData';
 
 export default class englishMusicController {
   constructor() {
@@ -10,7 +10,7 @@ export default class englishMusicController {
     this.volumeShow = document.querySelector('.volume__show');
     this.volumeIcon = document.querySelector('.volume__icon');
     this.slider = document.querySelector('.duration__slider');
-    this.canvas = document.getElementById('canvas__visual');
+    this.canvasElement = document.getElementById('canvas__visual');
     this.trackImage = document.querySelector('.block-right__track-image');
     this.autoPlay = document.querySelector('.block-right__auto');
     this.present = document.querySelector('.show-song__present');
@@ -22,6 +22,39 @@ export default class englishMusicController {
     this.index = 0;
     this.playingSong = false;
     this.track = document.createElement('audio');
+
+    this.audioContext = null;
+  }
+
+  createVisualiser() {
+    this.audioContext = new AudioContext();
+    const src = this.audioContext.createMediaElementSource(this.track);
+    const analyser = this.audioContext.createAnalyser();
+    const canvas = this.canvasElement;
+    const ctx = canvas.getContext('2d');
+    src.connect(analyser);
+    analyser.connect(this.audioContext.destination);
+    analyser.fftSize = 128;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+    const barWidth = (canvas.width / bufferLength) * 2.5;
+
+    function renderFrame() {
+      requestAnimationFrame(renderFrame);
+      let bar = 0;
+      analyser.getByteFrequencyData(dataArray);
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < bufferLength; i += 1) {
+        const barHeight = dataArray[i] - 75;
+        const r = barHeight + (25 * (i / bufferLength));
+        ctx.fillStyle = `rgb(${r}, 0, 255)`;
+        ctx.fillRect(bar, canvas.height - barHeight, barWidth, barHeight);
+        bar += barWidth + 2;
+      }
+    }
+    renderFrame();
   }
 
   resetSlider() {
@@ -36,13 +69,15 @@ export default class englishMusicController {
     this.title.innerHTML = allSong[number].name;
     this.trackImage.src = allSong[number].img;
     this.track.load();
-
     this.timer = setInterval(this.rangeSlider.bind(this), 1000);
     this.total.innerHTML = allSong.length;
     this.present.innerHTML = number + 1;
   }
 
   playSong() {
+    if (!this.audioContext) {
+      this.createVisualiser();
+    }
     this.track.play();
     this.playingSong = true;
     this.play.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
@@ -58,7 +93,11 @@ export default class englishMusicController {
     if (this.track.ended) {
       this.play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
       if (this.autoplay === 1) {
-        this.index += 1;
+        if (this.index !== 9) {
+          this.index += 1;
+        } else {
+          this.index = 0;
+        }
         this.loadTrack(this.index);
         this.playSong();
       }
