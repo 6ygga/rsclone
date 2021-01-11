@@ -1,5 +1,5 @@
-import './englishMusic.scss';
-import EnglishMusicController from '../../../controllers/English/englishMusicController';
+import './music.scss';
+import EnglishMusicController from './music-controller';
 
 export default class EnglishMusic {
   constructor() {

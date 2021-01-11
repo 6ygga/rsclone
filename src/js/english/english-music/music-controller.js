@@ -1,4 +1,4 @@
-import allSong from '../../models/audioData';
+import allSong from './music-data';
 
 export default class englishMusicController {
   constructor() {
