@@ -12,6 +12,10 @@ class UserAuth extends EventEmitter {
     this.preference = null;
   }
 
+  isAuthenticated() {
+    return !!this.token;
+  }
+
   setCredentials(token, user, preference) {
     this.token = token;
     this.user = user;
@@ -64,4 +68,4 @@ class UserAuth extends EventEmitter {
   }
 }
 
-export default UserAuth;
+export const userAuth = new UserAuth();
