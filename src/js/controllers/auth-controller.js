@@ -1,9 +1,9 @@
-import UserAuth from '../models/user-auth';
+import { userAuth } from '../models/user-auth';
 import AuthView from '../views/auth-view';
 
 export class AuthController {
   constructor() {
-    this.userAuth = new UserAuth();
+    this.userAuth = userAuth;
     this.authView = new AuthView();
 
     this.authView.on('clickLogin', (user) => {
