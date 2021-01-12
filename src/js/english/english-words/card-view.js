@@ -8,7 +8,11 @@ export default class Fragment {
   }
 
   init() {
-    this.createMenu();
+    if (this.model.name) {
+      this.createMenu();
+    } else {
+      this.createWords();
+    }
   }
 
   createMenu() {
@@ -46,7 +50,7 @@ export default class Fragment {
     image.classList.add('card__image');
     image.setAttribute('alt', this.model.word);
 
-    imageTurn.setAttribute('src', './assets/images/rotate.svg');
+    imageTurn.setAttribute('src', './assets/images/common/rotate.svg');
     imageTurn.classList.add('card__imageTurn');
     imageTurn.setAttribute('alt', 'turn');
 
