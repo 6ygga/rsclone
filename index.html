@@ -1,14 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>clone-JS</title>
-</head>
-<body>
-    <div id="data"></div>
-</body>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="#" class="navbar-brand">Clone<b>JS</b></a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          id="navbarCollapse"
+          class="collapse navbar-collapse justify-content-start"
+        >
+          <div class="navbar-nav">
+            <a href="#" class="nav-item nav-link">Math</a>
+            <a href="#" class="nav-item nav-link">English</a>
+          </div>
+          <div class="navbar-nav ml-auto action-buttons" id="authControls">
+            <div class="nav-item dropdown" id="loginForm">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="nav-link dropdown-toggle mr-4"
+                >Login</a
+              >
+              <div class="dropdown-menu action-form">
+                <p class="hint-text">Sign in</p>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control username"
+                    placeholder="Username"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control password"
+                    placeholder="Password"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <div class="invalid-feedback"></div>
+                </div>
+                <input
+                  type="submit"
+                  class="btn btn-primary btn-block"
+                  value="Login"
+                  id="login"
+                />
+              </div>
+            </div>
+            <div class="nav-item dropdown" id="signUpForm">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="btn btn-primary dropdown-toggle sign-up-btn"
+                >Sign up</a
+              >
+              <div class="dropdown-menu action-form">
+                <p class="hint-text">
+                  Fill in this form to create your account!
+                </p>
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control email"
+                    placeholder="E-mail"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control username"
+                    placeholder="Username"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control password"
+                    placeholder="Password"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control r-password"
+                    placeholder="Confirm"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <div class="invalid-feedback"></div>
+                </div>
+                <input
+                  type="submit"
+                  class="btn btn-primary btn-block"
+                  value="Sign up"
+                  id="signUp"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container-fluid">
+      <img
+        src="/src/assets/img/a8ov_s5nh_171123.jpg"
+        class="img-thumbnail mt-3 mx-auto shadow-sm sub-img"
+        alt="English"
+        width="1200px"
+      />
+      <img
+        src="/src/assets/img/h9ij_ddcc_171126.jpg"
+        class="img-thumbnail mt-3 mx-auto shadow-sm sub-img"
+        alt="Math"
+        width="1200px"
+      />
+    </main>
+  </body>
 </html>
