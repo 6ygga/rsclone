@@ -48,7 +48,7 @@ const words = {
       image: 'assets/images/person/neighbor.jpg',
       audioSrc: 'assets/music/person/neighbor.mp3',
     },
-    /* {
+    {
       word: 'name',
       translation: 'имя, название',
       image: 'assets/images/person/name.jpg',
@@ -1331,7 +1331,7 @@ const words = {
       translation: 'бумажник',
       image: 'assets/images/person/wallet.jpg',
       audioSrc: 'assets/music/person/wallet.mp3',
-    }, */
+    },
   ],
   сharacteristics: [
     {
