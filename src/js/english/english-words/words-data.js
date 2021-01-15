@@ -48,7 +48,7 @@ const words = {
       image: 'assets/images/person/neighbor.jpg',
       audioSrc: 'assets/music/person/neighbor.mp3',
     },
-    {
+    /* {
       word: 'name',
       translation: 'имя, название',
       image: 'assets/images/person/name.jpg',
@@ -1331,6 +1331,104 @@ const words = {
       translation: 'бумажник',
       image: 'assets/images/person/wallet.jpg',
       audioSrc: 'assets/music/person/wallet.mp3',
+    }, */
+  ],
+  сharacteristics: [
+    {
+      word: 'colour',
+      translation: 'характеристика',
+      image: 'assets/images/сharacteristics/colour.jpg',
+      audioSrc: 'assets/music/сharacteristics/colour.mp3',
+    },
+    {
+      word: 'red',
+      translation: 'красный',
+      image: 'assets/images/сharacteristics/red.jpg',
+      audioSrc: 'assets/music/сharacteristics/red.mp3',
+    },
+    {
+      word: 'orange',
+      translation: 'оранжевый',
+      image: 'assets/images/сharacteristics/orange.jpg',
+      audioSrc: 'assets/music/сharacteristics/orange.mp3',
+    },
+    {
+      word: 'yellow',
+      translation: 'желтый',
+      image: 'assets/images/сharacteristics/yellow.jpg',
+      audioSrc: 'assets/music/сharacteristics/yellow.mp3',
+    },
+    {
+      word: 'green',
+      translation: 'зеленый',
+      image: 'assets/images/сharacteristics/green.jpg',
+      audioSrc: 'assets/music/сharacteristics/green.mp3',
+    },
+    {
+      word: 'blue',
+      translation: 'голубой, синий',
+      image: 'assets/images/сharacteristics/blue.jpg',
+      audioSrc: 'assets/music/сharacteristics/blue.mp3',
+    },
+    {
+      word: 'purple',
+      translation: 'фиолетовый',
+      image: 'assets/images/сharacteristics/purple.jpg',
+      audioSrc: 'assets/music/сharacteristics/purple.mp3',
+    },
+    {
+      word: 'pink',
+      translation: 'розовый',
+      image: 'assets/images/сharacteristics/pink.jpg',
+      audioSrc: 'assets/music/сharacteristics/pink.mp3',
+    },
+    {
+      word: 'brown',
+      translation: 'коричневый',
+      image: 'assets/images/сharacteristics/brown.jpg',
+      audioSrc: 'assets/music/сharacteristics/brown.mp3',
+    },
+    {
+      word: 'black',
+      translation: 'черный',
+      image: 'assets/images/сharacteristics/black.jpg',
+      audioSrc: 'assets/music/сharacteristics/black.mp3',
+    },
+    {
+      word: 'grey',
+      translation: 'серый',
+      image: 'assets/images/сharacteristics/grey.jpg',
+      audioSrc: 'assets/music/сharacteristics/grey.mp3',
+    },
+    {
+      word: 'white',
+      translation: 'белый',
+      image: 'assets/images/сharacteristics/white.jpg',
+      audioSrc: 'assets/music/сharacteristics/white.mp3',
+    },
+    {
+      word: 'bright',
+      translation: 'яркий',
+      image: 'assets/images/сharacteristics/bright.jpg',
+      audioSrc: 'assets/music/сharacteristics/bright.mp3',
+    },
+    {
+      word: 'colourful',
+      translation: 'цветной',
+      image: 'assets/images/сharacteristics/colourful.jpg',
+      audioSrc: 'assets/music/сharacteristics/colourful.mp3',
+    },
+    {
+      word: 'dark',
+      translation: 'темный',
+      image: 'assets/images/сharacteristics/dark.jpg',
+      audioSrc: 'assets/music/сharacteristics/dark.mp3',
+    },
+    {
+      word: 'light',
+      translation: 'светлый, легкий',
+      image: 'assets/images/сharacteristics/light.jpg',
+      audioSrc: 'assets/music/сharacteristics/light.mp3',
     },
   ],
 };

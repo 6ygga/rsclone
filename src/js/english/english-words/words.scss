@@ -1,11 +1,20 @@
+.wrapper__card-list{
+  max-width: 1200px;
+  min-height: calc(100vh - 240px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
 .card-list{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0;
   max-width: 1200px;
-  height: 70vh;
-  margin: 0 auto 10vh auto;
+  // height: 70vh;
+  // margin: 0 auto 10vh auto;
 }
 .card-list__card{
   margin-bottom: 30px;
@@ -31,8 +40,8 @@
   border: 2px solid black;
 }
 .card__game-mode{
-  border: 2px solid green;
-  height: 226px;
+  border: 2px solid rgb(1, 247, 1);
+  height: 284px;
 }
 
 .card__image{
@@ -43,7 +52,8 @@
 }
 
 .card_image-game{
-  height: 223px;
+  height: 280px;
+  border-bottom: none;
 }
 
 .card__imageTurn{
@@ -85,6 +95,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 }
 .game-button__off{
   display: none;
@@ -146,7 +157,8 @@
 }
 
 .switcher-block:hover{
-  box-shadow: 2px 2px 2px 2px black;
+  // box-shadow: 2px 2px 2px 2px black;
+  border-color:blue;
 }
 
 .switcher{
@@ -157,9 +169,10 @@
 
 .switcher__on{
   right: 0;
-  background-color: green;
+  background-color:  rgb(1, 247, 1);
 }
 .switcher__off{
   background-color: white;
   left: 0;
 }
+

@@ -10,7 +10,13 @@ export default class CardList {
     this.element = null;
     this.createWrapper();
     this.createSwitcher();
+    this.createPanelAnswer();
     this.createCardBlock();
+    this.createStarGameButton();
+    this.createRepeatButton();
+    this.createAudio();
+    this.createSuccessModal();
+    this.createErrorModal();
   }
 
   createWrapper() {
@@ -58,9 +64,9 @@ export default class CardList {
 
   personClick() {
     if (!this.count) {
-      document.querySelector('.card-list').childNodes[0].addEventListener('click', () => {
+      document.querySelector('.card-list').childNodes[1].addEventListener('click', () => {
         this.count += 1;
-        this.render(words.people);
+        this.render(words.сharacteristics);
         const gameController = new GameController();
         gameController.init();
       });
@@ -98,10 +104,10 @@ export default class CardList {
     audioSuccess.classList.add('audio-success');
     audioFailure.classList.add('audio-failure');
 
-    audioCorrect.innerHTML = '<source src="./assets/audio/correct.mp3" type="audio/mpeg">';
-    audioError.innerHTML = '<source src="./assets/audio/error.mp3" type="audio/mpeg">';
-    audioSuccess.innerHTML = '<source src="./assets/audio/success.mp3" type="audio/mpeg">';
-    audioFailure.innerHTML = '<source src="./assets/audio/failure.mp3" type="audio/mpeg">';
+    audioCorrect.innerHTML = '<source src="assets/music/common/correct.mp3" type="audio/mpeg">';
+    audioError.innerHTML = '<source src="assets/music/common/error.mp3" type="audio/mpeg">';
+    audioSuccess.innerHTML = '<source src="assets/music/common/success.mp3" type="audio/mpeg">';
+    audioFailure.innerHTML = '<source src="assets/music/common/failure.mp3" type="audio/mpeg">';
 
     this.wrapper.appendChild(audioCorrect);
     this.wrapper.appendChild(audioError);
@@ -124,7 +130,7 @@ export default class CardList {
     modal.classList.add('finish-modal__close');
     modal.classList.add('success-modal');
     const img = new Image();
-    img.src = 'assets/images/success.jpg';
+    img.src = 'assets/images/common/success.jpg';
     document.querySelector('body').appendChild(modal);
     modal.appendChild(img);
     const text = document.createElement('div');
@@ -139,7 +145,7 @@ export default class CardList {
     const modal = document.createElement('div');
     modal.classList.add('error-modal');
     const img = new Image();
-    img.src = 'assets/images/failure.jpg';
+    img.src = 'assets/images/common/failure.jpg';
     document.querySelector('body').appendChild(modal);
     modal.appendChild(img);
     modal.classList.add('finish-modal__close');

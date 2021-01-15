@@ -156,7 +156,7 @@ export default class GameController {
            === audioArray[currentNumberOfSound]) {
           element.classList.add('card__correct');
           const imgCorrect = new Image(40, 40);
-          imgCorrect.src = 'assets/images/star-win.svg';
+          imgCorrect.src = 'assets/images/common/star-win.svg';
           currentNumberOfSound += 1;
           audioWord.src = audioArray[currentNumberOfSound];
           setTimeout(() => {
@@ -168,7 +168,7 @@ export default class GameController {
             }, 500);
           }
           this.panelAnswer.appendChild(imgCorrect);
-          const statistic = JSON.parse(localStorage.getItem('statistic'));
+          /* const statistic = JSON.parse(localStorage.getItem('statistic'));
           for (let i = 0; i < statistic.word.length; i += 1) {
             if (element.childNodes[1].firstChild.innerText === statistic.word[i]) {
               statistic.correct[i] += 1;
@@ -180,17 +180,17 @@ export default class GameController {
               }
             }
           }
-          localStorage.setItem('statistic', JSON.stringify(statistic));
+          localStorage.setItem('statistic', JSON.stringify(statistic)); */
         } else {
           isError = true;
           mistake += 1;
           const imgError = new Image(40, 40);
-          imgError.src = 'assets/images/star.svg';
+          imgError.src = 'assets/images/common/star.svg';
           setTimeout(() => {
             this.audioError.play();
           }, 200);
           this.panelAnswer.appendChild(imgError);
-          const statistic = JSON.parse(localStorage.getItem('statistic'));
+          /* const statistic = JSON.parse(localStorage.getItem('statistic'));
           for (let i = 0; i < statistic.word.length; i += 1) {
             if (element.childNodes[1].firstChild.innerText === statistic.word[i]) {
               statistic.wrong[i] += 1;
@@ -198,7 +198,7 @@ export default class GameController {
                  / (statistic.correct[i] + statistic.wrong[i])) * 100).toFixed(3);
             }
           }
-          localStorage.setItem('statistic', JSON.stringify(statistic));
+          localStorage.setItem('statistic', JSON.stringify(statistic)); */
         }
 
         if (currentNumberOfSound === this.allCards.length) {
