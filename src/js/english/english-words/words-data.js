@@ -4949,6 +4949,74 @@ const words = {
       audioSrc: 'assets/music/animalsAndNature/windy.mp3',
     },
   ],
+  eventsAndPlaces: [
+    {
+      word: 'birthday',
+      translation: 'день рождения',
+      image: 'assets/images/eventsAndPlaces/birthday.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/birthday.mp3',
+    },
+    {
+      word: 'Сhristmas',
+      translation: 'рождество',
+      image: 'assets/images/eventsAndPlaces/christmas.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/christmas.mp3',
+    },
+    {
+      word: 'death',
+      translation: 'смерть',
+      image: 'assets/images/eventsAndPlaces/death.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/death.mp3',
+    },
+    {
+      word: 'Easter',
+      translation: 'Пасха',
+      image: 'assets/images/eventsAndPlaces/easter.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/easter.mp3',
+    },
+    {
+      word: 'game',
+      translation: 'игра',
+      image: 'assets/images/eventsAndPlaces/game.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/game.mp3',
+    },
+    {
+      word: 'holiday',
+      translation: 'праздник, каникулы, отпуск',
+      image: 'assets/images/eventsAndPlaces/holiday.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/holiday.mp3',
+    },
+    {
+      word: 'meeting',
+      translation: 'встреча, собрание',
+      image: 'assets/images/eventsAndPlaces/meeting.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/meeting.mp3',
+    },
+    {
+      word: 'party',
+      translation: 'вечеринка',
+      image: 'assets/images/eventsAndPlaces/party.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/party.mp3',
+    },
+    {
+      word: 'wedding',
+      translation: 'свадьба',
+      image: 'assets/images/eventsAndPlaces/wedding.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/wedding.mp3',
+    },
+    {
+      word: 'balloon',
+      translation: 'воздушный шар',
+      image: 'assets/images/eventsAndPlaces/balloon.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/balloon.mp3',
+    },
+    {
+      word: 'box',
+      translation: 'коробка, боксировать',
+      image: 'assets/images/eventsAndPlaces/box.jpg',
+      audioSrc: 'assets/music/eventsAndPlaces/box.mp3',
+    },
+  ],
 
 };
 
