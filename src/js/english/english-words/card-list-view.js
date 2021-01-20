@@ -64,9 +64,9 @@ export default class CardList {
 
   personClick() {
     if (!this.count) {
-      document.querySelector('.card-list').childNodes[5].addEventListener('click', () => {
+      document.querySelector('.card-list').childNodes[6].addEventListener('click', () => {
         this.count += 1;
-        this.render(words.animalsAndNature);
+        this.render(words.eventsAndPlaces);
         const gameController = new GameController();
         gameController.init();
       });
