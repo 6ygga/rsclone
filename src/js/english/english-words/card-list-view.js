@@ -8,6 +8,7 @@ export default class CardList {
     this.count = 0;
     this.cards = [];
     this.element = null;
+    this.countCards = 8;
     this.createWrapper();
     this.createSwitcher();
     this.createPanelAnswer();
@@ -56,7 +57,11 @@ export default class CardList {
     /* const switcher = document.querySelector('.switcher');
     switcher.classList.remove('switcher__on');
     switcher.classList.add('switcher__off'); */
-    for (let i = 0; i < model.length; i += 1) {
+    if (model.length > this.countCards) {
+      this.shuffle(model);
+    }
+
+    for (let i = 0; i < this.countCards; i += 1) {
       this.cards.push(new Card(this, model[i], i));
     }
     this.personClick();
@@ -64,9 +69,9 @@ export default class CardList {
 
   personClick() {
     if (!this.count) {
-      document.querySelector('.card-list').childNodes[6].addEventListener('click', () => {
+      document.querySelector('.card-list').childNodes[7].addEventListener('click', () => {
         this.count += 1;
-        this.render(words.eventsAndPlaces);
+        this.render(words.home);
         const gameController = new GameController();
         gameController.init();
       });
@@ -152,5 +157,17 @@ export default class CardList {
     const text = document.createElement('div');
     text.classList.add('mistakes-modal');
     modal.appendChild(text);
+  }
+
+  shuffle(arr) {
+    let j;
+    let temp;
+    for (let i = arr.length - 1; i > 0; i -= 1) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = arr[j];
+      arr[j] = arr[i];
+      arr[i] = temp;
+    }
+    return arr;
   }
 }

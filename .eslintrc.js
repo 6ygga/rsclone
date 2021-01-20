@@ -15,5 +15,6 @@ module.exports = {
     'linebreak-style': ['error', 'windows'],
     'class-methods-use-this': 'off',
     'no-restricted-globals': ['error', 'event', 'fdescribe'],
+    "no-param-reassign": 0,
   },
 };
