@@ -61,7 +61,7 @@ export default class CardList {
       this.shuffle(model);
     }
 
-    for (let i = 0; i < this.countCards; i += 1) {
+    for (let i = 0; i < model.length; i += 1) {
       this.cards.push(new Card(this, model[i], i));
     }
     this.personClick();
@@ -69,9 +69,9 @@ export default class CardList {
 
   personClick() {
     if (!this.count) {
-      document.querySelector('.card-list').childNodes[7].addEventListener('click', () => {
+      document.querySelector('.card-list').childNodes[6].addEventListener('click', () => {
         this.count += 1;
-        this.render(words.home);
+        this.render(words.eventsAndPlaces);
         const gameController = new GameController();
         gameController.init();
       });
