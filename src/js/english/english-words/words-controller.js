@@ -63,12 +63,10 @@ export default class GameController {
     this.repeatButton.classList.remove('game-button__on');
     this.panelAnswer.classList.add('game-button__off');
     this.panelAnswer.classList.remove('panel-answer__on');
-
     this.switcher.classList.remove('switcher__on');
     this.switcher.classList.add('switcher__off');
     this.switcherBlock.onclick = () => {
       window.getSelection().removeAllRanges();
-      if (location.hash === '#Menu') return;
       if (this.switcher.classList.contains('switcher__off')) {
         this.switcher.childNodes[0].innerText = 'Game';
         this.switcher.classList.remove('switcher__off');
