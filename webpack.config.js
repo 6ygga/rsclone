@@ -39,7 +39,7 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js$/,
-        use: ['eslint-loader', 'source-map-loader'],
+        use: ['babel-loader', 'eslint-loader', 'source-map-loader'],
       },
     ],
   },
