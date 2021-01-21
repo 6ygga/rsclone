@@ -1,10 +1,5 @@
 import createDOMElement from '../create-dom-element';
-import {
-  Fractions,
-  MultiplicationTable,
-  TimeGame,
-  VerbalCounting,
-} from '../constants/math-simulators';
+import { Simulators } from '../constants/math-simulators';
 
 export default class MathMain {
   static render() {
@@ -21,7 +16,7 @@ export default class MathMain {
   }
 
   static createCardsLinks() {
-    const cardLinks = [Fractions, MultiplicationTable, TimeGame, VerbalCounting].map((item) => {
+    const cardLinks = Simulators.map((item) => {
       const card = MathMain.createCard(item);
       const link = createDOMElement(
         'a',

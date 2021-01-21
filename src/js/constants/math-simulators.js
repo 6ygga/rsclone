@@ -1,11 +1,5 @@
-const Fractions = 'fractions';
-const MultiplicationTable = 'multiplication-table';
-const TimeGame = 'time-game';
-const VerbalCounting = 'verbal-counting';
+const Simulators = ['fractions', 'multiplication table', 'time game', 'verbal counting'];
 
 export {
-  Fractions,
-  MultiplicationTable,
-  TimeGame,
-  VerbalCounting,
+  Simulators,
 };
