@@ -49,28 +49,12 @@ export default class GameController {
       element.addEventListener('click', (event) => {
         event.path[2].classList.add('rotate');
         setTimeout(() => {
-          event.path[1].childNodes[0].classList.add('card_title-hidden');
-          event.path[1].childNodes[1].classList.remove('card_title-hidden');
+          event.path[1].childNodes[0].classList.toggle('card_title-hidden');
+          event.path[1].childNodes[1].classList.toggle('card_title-hidden');
           event.path[2].classList.remove('rotate');
-        }, 100);
-        setTimeout(() => {
-          event.path[1].childNodes[0].classList.add('russianTitle');
-        }, 150);
+        }, 500);
       });
       // const allCards = document.querySelectorAll(".card-list__card");
-      this.allCards.forEach((item) => {
-        item.addEventListener('mouseleave', () => {
-          if (item.childNodes[1].childNodes[0].classList.contains('russianTitle')) {
-            item.classList.add('rotate');
-            setTimeout(() => {
-              item.childNodes[1].childNodes[1].classList.add('card_title-hidden');
-              item.childNodes[1].childNodes[0].classList.remove('card_title-hidden');
-              item.childNodes[1].childNodes[0].classList.remove('russianTitle');
-              item.classList.remove('rotate');
-            }, 200);
-          }
-        });
-      });
     });
   }
 
@@ -83,8 +67,10 @@ export default class GameController {
     this.switcher.classList.remove('switcher__on');
     this.switcher.classList.add('switcher__off');
     this.switcherBlock.onclick = () => {
+      window.getSelection().removeAllRanges();
       if (location.hash === '#Menu') return;
       if (this.switcher.classList.contains('switcher__off')) {
+        this.switcher.childNodes[0].innerText = 'Game';
         this.switcher.classList.remove('switcher__off');
         this.switcher.classList.add('switcher__on');
         this.gameButton.classList.add('game-button__on');
@@ -99,6 +85,7 @@ export default class GameController {
           element.childNodes[0].classList.add('card_image-game');
         });
       } else {
+        this.switcher.childNodes[0].innerText = 'Training';
         this.switcher.classList.add('switcher__off');
         this.switcher.classList.remove('switcher__on');
         this.gameButton.classList.remove('game-button__on');
@@ -121,6 +108,7 @@ export default class GameController {
 
   startGame() {
     this.gameButton.addEventListener('click', () => {
+      this.switcherBlock.classList.add('game-button__off');
       this.gameButton.classList.remove('game-button__on');
       this.gameButton.classList.add('game-button__off');
       const audioArray = [];

@@ -36,13 +36,18 @@ export default class CardList {
   }
 
   createSwitcher() {
-    const switcherBlock = document.createElement('div');
+    this.switcherBlock = document.createElement('div');
     const switcher = document.createElement('div');
-    switcherBlock.classList.add('switcher-block');
+    const info = document.createElement('span');
+    this.switcherBlock.classList.add('switcher-block');
+    this.switcherBlock.classList.add('game-button__off');
     switcher.classList.add('switcher');
     switcher.classList.add('switcher__off');
-    switcherBlock.appendChild(switcher);
-    this.wrapper.appendChild(switcherBlock);
+    info.innerText = 'Training';
+    info.classList.add('switcher__info');
+    this.switcherBlock.appendChild(switcher);
+    switcher.appendChild(info);
+    this.wrapper.appendChild(this.switcherBlock);
   }
 
   render(model) {
@@ -59,9 +64,12 @@ export default class CardList {
     switcher.classList.add('switcher__off'); */
     if (model.length > this.countCards) {
       this.shuffle(model);
+      this.switcherBlock.classList.remove('game-button__off');
+    } else {
+      this.switcherBlock.classList.add('game-button__off');
     }
 
-    for (let i = 0; i < model.length; i += 1) {
+    for (let i = 0; i < this.countCards; i += 1) {
       this.cards.push(new Card(this, model[i], i));
     }
     this.personClick();
@@ -69,9 +77,9 @@ export default class CardList {
 
   personClick() {
     if (!this.count) {
-      document.querySelector('.card-list').childNodes[6].addEventListener('click', () => {
+      document.querySelector('.card-list').childNodes[0].addEventListener('click', () => {
         this.count += 1;
-        this.render(words.eventsAndPlaces);
+        this.render(words.сharacteristics);
         const gameController = new GameController();
         gameController.init();
       });

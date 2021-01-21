@@ -19,7 +19,7 @@
 .card-list__card{
   margin-bottom: 30px;
   list-style-type: none;
-  transition: 0.1s all ease;
+  transition: 0.4s all ease;
   margin: 5px;
   box-sizing: border-box;
   background-color: white;
@@ -147,8 +147,8 @@
 }
 
 .switcher-block {
-  width: 50px;
-  height: 25px;
+  width: 100px;
+  height: 40px;
   background-color: black;
   position: relative;
  // margin-right: 10px;
@@ -162,9 +162,12 @@
 }
 
 .switcher{
-  width: 20px;
-  height: 25px;
+  width: 50px;
+  height: 40px;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .switcher__on{
@@ -175,4 +178,7 @@
   background-color: white;
   left: 0;
 }
-
+.switcher__info{
+  user-select: none;
+  font-size: 14px;
+}
