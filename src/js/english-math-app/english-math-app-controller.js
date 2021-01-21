@@ -6,9 +6,14 @@ export default class EnglishMathAppController {
   constructor(model, view) {
     this.#model = model;
     this.#view = view;
+
+    this.#view.emitter.on('changePage', (event) => this.changePage(event));
   }
 
-  changePage() {
-    // this.#model.changeRoute();
+  changePage(event) {
+    const url = event.newURL;
+    const newRoute = url.slice(url.indexOf('#') - 1);
+
+    this.#model.changeRoute(newRoute);
   }
 }

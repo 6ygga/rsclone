@@ -1,13 +1,13 @@
-const Math = '/#/math';
-const Fractions = '/#/fractions';
-const MultiplicationTable = '/#/multiplication-table';
-const TimeGame = '/#/time-game';
-const VerbalCounting = '/#/verbal-counting';
+const MATH = '/#/math';
+const FRACTIONS = '/#/math/fractions';
+const MULTIPLICATION_TABLE = '/#/math/multiplication-table';
+const TIME_GAME = '/#/math/time-game';
+const VERBAL_COUNTING = '/#/math/verbal-counting';
 
 export {
-  Math,
-  Fractions,
-  MultiplicationTable,
-  TimeGame,
-  VerbalCounting,
+  MATH,
+  FRACTIONS,
+  MULTIPLICATION_TABLE,
+  TIME_GAME,
+  VERBAL_COUNTING,
 };

@@ -1,19 +1,13 @@
 import createDOMElement from '../create-dom-element';
 import { Simulators } from '../constants/math-simulators';
 import {
-  Fractions,
-  MultiplicationTable,
-  TimeGame,
-  VerbalCounting,
+  FRACTIONS,
+  MULTIPLICATION_TABLE,
+  TIME_GAME,
+  VERBAL_COUNTING,
 } from '../constants/routes';
 
 export default class MathMain {
-  static render() {
-    const mathMain = MathMain.createPage();
-
-    document.body.appendChild(mathMain);
-  }
-
   static createPage() {
     const cardsLinks = MathMain.createCardsLinks();
     const mathMain = createDOMElement('section', { class: 'math' }, ...cardsLinks);
@@ -22,17 +16,10 @@ export default class MathMain {
   }
 
   static createCardsLinks() {
-    const routs = [Fractions, MultiplicationTable, TimeGame, VerbalCounting];
+    const routs = [FRACTIONS, MULTIPLICATION_TABLE, TIME_GAME, VERBAL_COUNTING];
     const cardLinks = Simulators.map((item, index) => {
       const card = MathMain.createCard(item);
-      const link = createDOMElement(
-        'a',
-        {
-          class: 'link',
-          href: `${routs[index]}`,
-        },
-        card,
-      );
+      const link = createDOMElement('a', { class: 'link', href: `${routs[index]}` }, card);
 
       return link;
     });

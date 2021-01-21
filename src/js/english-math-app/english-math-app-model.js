@@ -1,11 +1,4 @@
 import EventEmitter from '../event-emitter';
-import {
-  Math,
-  // Fractions,
-  // MultiplicationTable,
-  // TimeGame,
-  // VerbalCounting,
-} from '../constants/routes';
 
 export default class EnglishMathAppModel {
   #route;
@@ -13,15 +6,21 @@ export default class EnglishMathAppModel {
   #emitter;
 
   constructor() {
-    this.#route = Math;
+    this.#route = null;
     this.#emitter = new EventEmitter();
+  }
+
+  get route() {
+    return this.#route;
   }
 
   get emitter() {
     return this.#emitter;
   }
 
-  changeRoute() {
+  changeRoute(route) {
+    this.#route = route;
+
     this.#emitter.emit('changePage');
   }
 }
