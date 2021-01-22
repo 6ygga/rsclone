@@ -12,7 +12,7 @@ module.exports = {
   },
   rules: {
     'import/prefer-default-export': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 0,
     'class-methods-use-this': 'off',
     'no-restricted-globals': ['error', 'event', 'fdescribe'],
     "no-param-reassign": 0,
