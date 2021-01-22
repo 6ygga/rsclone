@@ -3,6 +3,8 @@ const audioWord = new Audio();
 export default class GameController {
   construct() {
     this.isGame = false;
+    this.countMistakes = 0;
+    this.isError = false;
     this.init();
   }
 
@@ -59,49 +61,44 @@ export default class GameController {
   }
 
   changeGameMode() {
-    this.repeatButton.classList.add('game-button__off');
+    /* this.repeatButton.classList.add('game-button__off');
     this.repeatButton.classList.remove('game-button__on');
     this.panelAnswer.classList.add('game-button__off');
     this.panelAnswer.classList.remove('panel-answer__on');
     this.switcher.classList.remove('switcher__on');
-    this.switcher.classList.add('switcher__off');
+    this.switcher.classList.add('switcher__off'); */
     this.switcherBlock.onclick = () => {
       window.getSelection().removeAllRanges();
       if (this.switcher.classList.contains('switcher__off')) {
         this.switcher.childNodes[0].innerText = 'Game';
-        this.switcher.classList.remove('switcher__off');
-        this.switcher.classList.add('switcher__on');
-        this.gameButton.classList.add('game-button__on');
-        this.gameButton.classList.remove('game-button__off');
-        this.allCards.forEach((elem) => {
-          const element = elem;
-          element.onclick = null;
-          element.classList.add('card__game-mode');
-          element.classList.remove('card__train-mode');
-          element.childNodes[1].classList.add('card-list__container-none');
-          element.childNodes[1].classList.remove('card-list__container-flex');
-          element.childNodes[0].classList.add('card_image-game');
-        });
       } else {
         this.switcher.childNodes[0].innerText = 'Training';
-        this.switcher.classList.add('switcher__off');
-        this.switcher.classList.remove('switcher__on');
-        this.gameButton.classList.remove('game-button__on');
-        this.gameButton.classList.add('game-button__off');
-        this.allCards.forEach((elem) => {
-          const element = elem;
-          element.onclick = () => {
-            element.childNodes[2].play();
-          };
-          element.classList.add('card__train-mode');
-          element.classList.remove('card__game-mode');
-          element.childNodes[1].classList.remove('card-list__container-none');
-          element.childNodes[1].classList.add('card-list__container-flex');
-          element.childNodes[0].classList.remove('card_image-game');
-        });
       }
+      this.сhangeCardParameters();
       this.isGame = !this.isGame;
     };
+  }
+
+  сhangeCardParameters() {
+    this.switcher.classList.toggle('switcher__off');
+    this.switcher.classList.toggle('switcher__on');
+    this.gameButton.classList.toggle('game-button__on');
+    this.gameButton.classList.toggle('game-button__off');
+    this.allCards.forEach((elem) => {
+      const element = elem;
+      element.onclick = () => {
+        if (this.switcher.classList.contains('switcher__on')) {
+          element.onclick = null;
+        } else {
+          element.childNodes[2].play();
+        }
+      };
+      element.classList.toggle('card__train-mode');
+      element.classList.toggle('card__game-mode');
+      element.childNodes[1].classList.toggle('card-list__container-none');
+      element.childNodes[1].classList.toggle('card-list__container-flex');
+      element.childNodes[0].classList.toggle('card_image-game');
+    });
   }
 
   startGame() {
@@ -125,8 +122,7 @@ export default class GameController {
     this.panelAnswer.classList.add('panel-answer__on');
 
     let currentNumberOfSound = 0;
-    let mistake = 0;
-    let isError = false;
+
     audioWord.preload = 'auto';
     audioWord.src = audioArray[currentNumberOfSound];
     audioWord.play();
@@ -142,7 +138,7 @@ export default class GameController {
            === audioArray[currentNumberOfSound]) {
           element.classList.add('card__correct');
           const imgCorrect = new Image(40, 40);
-          imgCorrect.src = 'assets/images/common/star-win.svg';
+          imgCorrect.src = 'assets/images/common/correct-icon.png';
           currentNumberOfSound += 1;
           audioWord.src = audioArray[currentNumberOfSound];
           setTimeout(() => {
@@ -168,10 +164,10 @@ export default class GameController {
           }
           localStorage.setItem('statistic', JSON.stringify(statistic)); */
         } else {
-          isError = true;
-          mistake += 1;
+          this.isError = true;
+          this.countMistakes += 1;
           const imgError = new Image(40, 40);
-          imgError.src = 'assets/images/common/star.svg';
+          imgError.src = 'assets/images/common/error-icon.png';
           setTimeout(() => {
             this.audioError.play();
           }, 200);
@@ -186,41 +182,42 @@ export default class GameController {
           }
           localStorage.setItem('statistic', JSON.stringify(statistic)); */
         }
-
         if (currentNumberOfSound === this.allCards.length) {
-          let modal;
-          this.mistakes.forEach((count) => {
-            const item = count;
-            item.innerText = `${mistake} mistakes`;
-          });
-          if (!isError) {
-            // const audioSuccess = document.querySelector(".audio-success");
-            this.audioSuccess.play();
-            modal = document.querySelector('.success-modal');
-          } else {
-            // const audioFailure = document.querySelector(".audio-failure");
-            this.audioFailure.play();
-            modal = document.querySelector('.error-modal');
-          }
-          this.repeatButton.onclick = null;
-          modal.classList.remove('finish-modal__close');
-          modal.classList.add('finish-modal__open');
-          setTimeout(() => {
-            modal.classList.add('finish-modal__close');
-            this.repeatButton.classList.add('game-button__off');
-            this.repeatButton.classList.remove('game-button__on');
-            this.panelAnswer.classList.add('game-button__off');
-            this.panelAnswer.classList.remove('panel-answer__on');
-            this.panelAnswer.innerHTML = '';
-            modal.classList.remove('finish-modal__open');
-          }, 2000);
-          setTimeout(() => {
-            window.location = '';
-          }, 2000);
-          this.isGame = !this.isGame;
+          this.endGame();
         }
       };
     });
+  }
+
+  endGame() {
+    let modal;
+    this.isGame = !this.isGame;
+    this.mistakes.forEach((count) => {
+      const item = count;
+      item.innerText = `${this.countMistakes} mistakes`;
+    });
+    if (!this.isError) {
+      this.audioSuccess.play();
+      modal = document.querySelector('.success-modal');
+    } else {
+      this.audioFailure.play();
+      modal = document.querySelector('.error-modal');
+    }
+    this.repeatButton.onclick = null;
+    modal.classList.remove('finish-modal__close');
+    modal.classList.add('finish-modal__open');
+    /* setTimeout(() => {
+      modal.classList.add('finish-modal__close');
+      this.repeatButton.classList.add('game-button__off');
+      this.repeatButton.classList.remove('game-button__on');
+      this.panelAnswer.classList.add('game-button__off');
+      this.panelAnswer.classList.remove('panel-answer__on');
+      this.panelAnswer.innerHTML = '';
+      modal.classList.remove('finish-modal__open');
+    }, 2000);
+    /* setTimeout(() => {
+      window.location = '';
+    }, 2000); */
   }
 
   shuffle(array) {

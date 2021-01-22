@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: `${__dirname}/dist`, // Folder to store generated bundle
     filename: 'bundle.js', // Name of generated bundle after build
-    publicPath: '/', // public URL of the output directory when referenced in a browser
+    // publicPath: '/', // public URL of the output directory when referenced in a browser
   },
   module: { // where we defined file patterns and their loaders
     rules: [
@@ -48,7 +48,7 @@ module.exports = {
       template: `${__dirname}/index.html`,
       inject: 'body',
     }),
-    new FaviconsWebpackPlugin(`${__dirname}/src/assets/images/favicon.ico`),
+    // new FaviconsWebpackPlugin(`${__dirname}/src/assets/images/favicon.ico`),
     new CopyWebpackPlugin({
       patterns: [
         { from: "./src/assets/images", to: "assets/images" },
