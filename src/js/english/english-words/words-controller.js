@@ -3,13 +3,14 @@ const audioWord = new Audio();
 export default class GameController {
   construct() {
     this.isGame = false;
-    this.countMistakes = 0;
-    this.isError = false;
     this.init();
   }
 
   init() {
     this.isGame = false;
+    this.countMistakes = 0;
+    this.isError = false;
+    this.countCards = 8;
     this.allCards = document.querySelectorAll('.card-list__card');
     this.allImageTurn = document.querySelectorAll('.card__imageTurn');
     this.repeatButton = document.querySelector('.repeat-button');
@@ -20,7 +21,7 @@ export default class GameController {
     this.gameButton = document.querySelector('.game-button');
     this.audioCorrect = document.querySelector('.audio-correct');
     this.audioError = document.querySelector('.audio-error');
-    this.mistakes = document.querySelectorAll('.mistakes-modal');
+    this.mistakes = document.querySelectorAll('.info-modal');
     this.audioSuccess = document.querySelector('.audio-success');
     this.audioFailure = document.querySelector('.audio-failure');
 
@@ -54,9 +55,8 @@ export default class GameController {
           event.path[1].childNodes[0].classList.toggle('card_title-hidden');
           event.path[1].childNodes[1].classList.toggle('card_title-hidden');
           event.path[2].classList.remove('rotate');
-        }, 500);
+        }, 300);
       });
-      // const allCards = document.querySelectorAll(".card-list__card");
     });
   }
 
@@ -116,11 +116,7 @@ export default class GameController {
   }
 
   repeateWord(audioArray) {
-    this.repeatButton.classList.remove('game-button__off');
-    this.repeatButton.classList.add('game-button__on');
-    this.panelAnswer.classList.remove('game-button__off');
-    this.panelAnswer.classList.add('panel-answer__on');
-
+    this.addElementStartGame();
     let currentNumberOfSound = 0;
 
     audioWord.preload = 'auto';
@@ -189,35 +185,47 @@ export default class GameController {
     });
   }
 
+  addElementStartGame() {
+    this.repeatButton.classList.remove('game-button__off');
+    this.repeatButton.classList.add('game-button__on');
+    this.panelAnswer.classList.remove('game-button__off');
+    this.panelAnswer.classList.add('panel-answer__on');
+  }
+
   endGame() {
-    let modal;
+    const modal = document.querySelector('.success-modal');
     this.isGame = !this.isGame;
     this.mistakes.forEach((count) => {
       const item = count;
-      item.innerText = `${this.countMistakes} mistakes`;
+      if (this.isError) {
+        item.innerText = 'Not bad.\n';
+      } else {
+        item.innerText = 'Great!\n';
+      }
+      item.innerText += `You make ${this.countMistakes} mistakes`;
+      /* item.innerText += `You learn ${this.countCards - this.countMistakes} words, \n`;
+      item.innerText += `${this.countCards - (this.countCards - this.countMistakes)}
+      words add to repeat`; */
     });
     if (!this.isError) {
       this.audioSuccess.play();
-      modal = document.querySelector('.success-modal');
     } else {
       this.audioFailure.play();
-      modal = document.querySelector('.error-modal');
     }
     this.repeatButton.onclick = null;
     modal.classList.remove('finish-modal__close');
     modal.classList.add('finish-modal__open');
-    /* setTimeout(() => {
-      modal.classList.add('finish-modal__close');
+    this.clearElementsAfterGame();
+  }
+
+  clearElementsAfterGame() {
+    setTimeout(() => {
       this.repeatButton.classList.add('game-button__off');
       this.repeatButton.classList.remove('game-button__on');
       this.panelAnswer.classList.add('game-button__off');
       this.panelAnswer.classList.remove('panel-answer__on');
       this.panelAnswer.innerHTML = '';
-      modal.classList.remove('finish-modal__open');
     }, 2000);
-    /* setTimeout(() => {
-      window.location = '';
-    }, 2000); */
   }
 
   shuffle(array) {

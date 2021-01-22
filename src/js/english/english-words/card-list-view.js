@@ -2,6 +2,7 @@ import './words.scss';
 import Card from './card-view';
 import words from './words-data';
 import GameController from './words-controller';
+import categories from './categories-data';
 
 export default class CardList {
   constructor() {
@@ -16,8 +17,7 @@ export default class CardList {
     this.createStarGameButton();
     this.createRepeatButton();
     this.createAudio();
-    this.createSuccessModal();
-    this.createErrorModal();
+    this.createModal();
   }
 
   createWrapper() {
@@ -135,36 +135,26 @@ export default class CardList {
     this.wrapper.appendChild(panelAnswer);
   }
 
-  createSuccessModal() {
+  createModal() {
     if (document.querySelector('.success-modal') != null) {
       return;
     }
     const modal = document.createElement('div');
     modal.classList.add('finish-modal__close');
     modal.classList.add('success-modal');
-    const img = new Image();
-    img.src = 'assets/images/common/success.jpg';
     document.querySelector('body').appendChild(modal);
-    modal.appendChild(img);
-    const text = document.createElement('div');
-    text.classList.add('mistakes-modal');
-    modal.appendChild(text);
-  }
-
-  createErrorModal() {
-    if (document.querySelector('.error-modal') != null) {
-      return;
-    }
-    const modal = document.createElement('div');
-    modal.classList.add('error-modal');
-    const img = new Image();
-    img.src = 'assets/images/common/failure.jpg';
-    document.querySelector('body').appendChild(modal);
-    modal.appendChild(img);
-    modal.classList.add('finish-modal__close');
-    const text = document.createElement('div');
-    text.classList.add('mistakes-modal');
-    modal.appendChild(text);
+    const close = document.createElement('span');
+    close.innerHTML = '&times;';
+    close.classList.add('close-modal');
+    const info = document.createElement('p');
+    info.classList.add('info-modal');
+    modal.appendChild(close);
+    modal.appendChild(info);
+    close.onclick = function () {
+      modal.classList.remove('finish-modal__open');
+      modal.classList.add('finish-modal__close-click');
+      this.render(categories);
+    }.bind(this);
   }
 
   shuffle(arr) {
