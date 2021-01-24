@@ -1,4 +1,5 @@
 module.exports = {
+  parser: 'babel-eslint',
   env: {
     browser: true,
     node: true,
@@ -12,7 +13,7 @@ module.exports = {
   },
   rules: {
     'import/prefer-default-export': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 0,
     'class-methods-use-this': 'off',
     'no-restricted-globals': ['error', 'event', 'fdescribe'],
   },

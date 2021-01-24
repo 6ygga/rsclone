@@ -1,4 +1,4 @@
-import EnglishMusic from './views/English/englishMusic/englishMusic';
+import EnglishMathApp from './english-math-app/english-math-app';
+import '../scss/index.scss';
 
-const englishMusic = new EnglishMusic();
-englishMusic.initContainer();
+EnglishMathApp.initialize();
