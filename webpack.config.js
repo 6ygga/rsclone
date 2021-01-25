@@ -45,6 +45,7 @@ module.exports = {
   },
   plugins: [ // Array of plugins to apply to build chunk
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       template: `${__dirname}/index.html`,
       inject: 'body',
     }),
