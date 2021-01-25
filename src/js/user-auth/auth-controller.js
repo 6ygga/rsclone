@@ -1,5 +1,5 @@
-import { userAuth } from '../models/user-auth';
-import AuthView from '../views/auth-view';
+import { userAuth } from './user-auth';
+import AuthView from './auth-view';
 
 export class AuthController {
   constructor() {

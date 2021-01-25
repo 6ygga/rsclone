@@ -1,4 +1,4 @@
-import { elementFactory, clearElement } from '../helpers/dom-elements-helpers';
+import { elementFactory, clearElement } from '../dom-elements-helpers';
 
 const { default: EventEmitter } = require('../EventEmitter');
 
