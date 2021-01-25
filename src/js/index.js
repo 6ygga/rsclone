@@ -1,3 +1,5 @@
+import EnglishMathApp from './english-math-app/english-math-app';
+import '../scss/index.scss';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/reset.scss';
@@ -7,3 +9,5 @@ import { AuthController } from './js/controllers/auth-controller';
 
 // eslint-disable-next-line no-unused-vars
 const authController = new AuthController();
+
+EnglishMathApp.initialize();

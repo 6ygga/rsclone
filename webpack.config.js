@@ -1,10 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // Require  html-webpack-plugin plugin
 module.exports = {
-  entry: `${__dirname}/src/index.js`, // webpack entry point. Module to start building dependency graph
+  entry: `${__dirname}/src/js/index.js`, // webpack entry point. Module to start building dependency graph
   output: {
     path: `${__dirname}/dist`, // Folder to store generated bundle
     filename: 'bundle.js', // Name of generated bundle after build
+    // publicPath: '/', // public URL of the output directory when referenced in a browser
   },
   module: { // where we defined file patterns and their loaders
     rules: [
@@ -26,17 +29,17 @@ module.exports = {
           'sass-loader',
         ],
       },
-      {
+      /* {
         test: /\.(jpg|mp3|svg|png)$/,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]',
+          name: `./src/assets/images/[name].[ext]`,
         },
-      },
+      }, */
       {
         enforce: 'pre',
         test: /\.js$/,
-        use: ['eslint-loader', 'source-map-loader'],
+        use: ['babel-loader', 'eslint-loader', 'source-map-loader'],
       },
     ],
   },
@@ -45,6 +48,13 @@ module.exports = {
       filename: 'index.html',
       template: `${__dirname}/index.html`,
       inject: 'body',
+    }),
+    // new FaviconsWebpackPlugin(`${__dirname}/src/assets/images/favicon.ico`),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./src/assets/images", to: "assets/images" },
+        { from: "./src/assets/music", to: "assets/music" },
+      ],
     }),
   ],
   devServer: { // configuration for webpack-dev-server
