@@ -3,14 +3,14 @@ const audioWord = new Audio();
 export default class GameController {
   construct() {
     this.isGame = false;
+    this.isError = false;
+    this.countCards = 8;
     this.init();
   }
 
   init() {
     this.isGame = false;
     this.countMistakes = 0;
-    this.isError = false;
-    this.countCards = 8;
     this.allCards = document.querySelectorAll('.card-list__card');
     this.allImageTurn = document.querySelectorAll('.card__imageTurn');
     this.repeatButton = document.querySelector('.repeat-button');

@@ -81,6 +81,7 @@
   width: 100px;
   height: 50px;
   margin-bottom: 10px;
+  user-select: none;
 }
 .game-button:hover,.repeat-button:hover, .reset-button:hover, .repeatWord-button:hover{
   background-color: blue;
