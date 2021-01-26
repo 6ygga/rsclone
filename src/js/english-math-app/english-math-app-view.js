@@ -5,12 +5,15 @@ import MultiplicationTable from '../math/multiplication-table/multiplication-tab
 import TimeGame from '../math/time-game/time-game';
 import VerbalCounting from '../math/verbal-counting/verbal-counting';
 import {
+  MAIN,
   MATH,
   FRACTIONS,
   MULTIPLICATION_TABLE,
   TIME_GAME,
   VERBAL_COUNTING,
 } from '../constants/routes';
+import { clearElement } from '../dom-elements-helpers';
+import { MainPageView } from '../main-page/main-page-view';
 
 export default class EnglishMathAppView {
   #model;
@@ -32,6 +35,8 @@ export default class EnglishMathAppView {
 
   changePage() {
     switch (this.#model.route) {
+      case MAIN: this.render(MainPageView.renderMain());
+        break;
       case MATH: this.render(MathMain.createPage());
         break;
       case FRACTIONS: this.render(Fractions.createPage());
@@ -42,14 +47,15 @@ export default class EnglishMathAppView {
         break;
       case VERBAL_COUNTING: this.render(VerbalCounting.createPage());
         break;
-      default: break;
+      default: this.render(MainPageView.renderMain());
+        break;
     }
   }
 
   render(page) {
     const main = document.querySelector('main');
 
-    while (main.firstChild) main.removeChild(main.firstChild);
+    clearElement(main);
 
     main.appendChild(page);
   }
