@@ -2,12 +2,9 @@ import EnglishMathApp from './english-math-app/english-math-app';
 import '../scss/index.scss';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './scss/reset.scss';
-import './scss/navbar.scss';
-import './scss/home-page.scss';
-import { AuthController } from './js/controllers/auth-controller';
+import MainPage from './main-page/main-page';
+import UserAuth from './user-auth/user-auth';
 
-// eslint-disable-next-line no-unused-vars
-const authController = new AuthController();
-
+MainPage.initialize();
+UserAuth.initialize();
 EnglishMathApp.initialize();
