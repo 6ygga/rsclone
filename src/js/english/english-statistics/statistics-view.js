@@ -57,13 +57,13 @@ export default class Statistics {
     table.appendChild(tbody);
     this.wrapper.appendChild(table);
     this.createStatistic.bind(this)();
-    // this.repeatWords();
   }
 
   sortTable() {
     const getSort = ({ target }) => {
-      /* eslint-disable-next-line */
-      const order = (target.dataset.order = -(target.dataset.order || -1));
+      target.dataset.order = -(target.dataset.order || -1);
+      const datasetOrder = target.dataset.order;
+      const order = datasetOrder;
       const index = [...target.parentNode.cells].indexOf(target);
       const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
       const comparator = (position, sequence) => (a, b) => sequence * collator.compare(
