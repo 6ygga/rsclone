@@ -47,7 +47,8 @@ export default class EnglishMathAppView {
         break;
       case VERBAL_COUNTING: this.render(VerbalCounting.createPage());
         break;
-      default: this.render(MainPageView.renderMain());
+      default:
+        document.location.replace(`${MAIN}`);
         break;
     }
   }
