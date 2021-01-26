@@ -5578,7 +5578,7 @@ const words = {
     },
     {
       word: 'chair',
-      translation: 'chair',
+      translation: 'стул',
       image: 'assets/images/home/chair-min.jpg',
       audioSrc: 'assets/music/home/chair.mp3',
     },
