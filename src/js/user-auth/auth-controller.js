@@ -1,9 +1,9 @@
-import { userAuth } from './user-auth';
+import { userAuthModel } from './user-auth-model';
 import AuthView from './auth-view';
 
 export class AuthController {
   constructor() {
-    this.userAuth = userAuth;
+    this.userAuth = userAuthModel;
     this.authView = new AuthView();
 
     this.authView.on('clickLogin', (user) => {
@@ -19,7 +19,7 @@ export class AuthController {
     });
 
     this.userAuth.on('userLogin', (data) => {
-      this.authView.displayUserNavBar(data);
+      this.authView.renderUserNavBar(data);
     });
 
     this.userAuth.on('loginError', (error) => {
@@ -27,7 +27,7 @@ export class AuthController {
     });
 
     this.userAuth.on('userLogout', () => {
-      this.authView.displayAuthNavBar();
+      this.authView.renderAuthNavBar();
     });
 
     this.userAuth.on('signUpError', (error) => {

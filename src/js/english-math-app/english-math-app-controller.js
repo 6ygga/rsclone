@@ -7,13 +7,11 @@ export default class EnglishMathAppController {
     this.#model = model;
     this.#view = view;
 
-    this.#view.emitter.on('changePage', (event) => this.changePage(event));
+    this.#view.emitter.on('changePage', (event) => this.changePage(event.newURL));
   }
 
-  changePage(event) {
-    const url = event.newURL;
+  changePage(url) {
     const newRoute = url.slice(url.indexOf('#') - 1);
-
     this.#model.changeRoute(newRoute);
   }
 }

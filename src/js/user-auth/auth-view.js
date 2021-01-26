@@ -1,6 +1,7 @@
-import { elementFactory, clearElement } from '../dom-elements-helpers';
+import { clearElement } from '../dom-elements-helpers';
+import createDOMElement from '../create-dom-element';
 
-const { default: EventEmitter } = require('../EventEmitter');
+const { default: EventEmitter } = require('../event-emitter');
 
 class AuthView extends EventEmitter {
   constructor() {
@@ -13,26 +14,26 @@ class AuthView extends EventEmitter {
     this.setUpLocalListeners();
   }
 
-  displayAuthNavBar() {
+  renderAuthNavBar() {
     const authControls = document.getElementById('authControls');
     clearElement(authControls);
     authControls.appendChild(this.loginForm);
     authControls.appendChild(this.signUpForm);
   }
 
-  displayUserNavBar(data) {
+  renderUserNavBar(data) {
     const authControls = document.getElementById('authControls');
     clearElement(authControls);
 
-    const dropdownDivider = elementFactory('div', { class: 'dropdown-divider' }, '');
-    const logoutItem = elementFactory('div', { class: 'dropdown-item', id: 'logout', href: '#' }, 'Logout');
-    const AccountItem = elementFactory('div', { class: 'dropdown-item', href: '#' }, 'Account');
-    const dropdownMenu = elementFactory('div', { class: 'dropdown-menu user-form' }, AccountItem, dropdownDivider, logoutItem);
+    const dropdownDivider = createDOMElement('div', { class: 'dropdown-divider' }, '');
+    const logoutItem = createDOMElement('div', { class: 'dropdown-item', id: 'logout', href: '#' }, 'Logout');
+    const AccountItem = createDOMElement('div', { class: 'dropdown-item', href: '#' }, 'Account');
+    const dropdownMenu = createDOMElement('div', { class: 'dropdown-menu user-form' }, AccountItem, dropdownDivider, logoutItem);
 
-    const aButton = elementFactory('a', { class: 'btn btn-primary dropdown-toggle sign-up-btn', 'data-toggle': 'dropdown' }, `${data.name}`);
-    const btnGroup = elementFactory('div', { class: 'nav-item dropdown' }, aButton, dropdownMenu);
+    const aButton = createDOMElement('a', { class: 'btn btn-primary dropdown-toggle sign-up-btn', 'data-toggle': 'dropdown' }, `${data.name}`);
+    const btnGroup = createDOMElement('div', { class: 'nav-item dropdown' }, aButton, dropdownMenu);
 
-    const navItemDropdown = elementFactory('div', { class: 'nav-item dropdown' }, btnGroup);
+    const navItemDropdown = createDOMElement('div', { class: 'nav-item dropdown' }, btnGroup);
 
     logoutItem.onclick = () => {
       this.emit('clickLogout');
