@@ -1,14 +1,15 @@
 export default function createDOMElement(type, attributes, ...items) {
   const element = document.createElement(type);
 
-  Object.entries(attributes).forEach((item) => {
-    const [name, value] = item;
-
-    element.setAttribute(name, value);
+  Object.keys(attributes).forEach((e) => {
+    element.setAttribute(e, attributes[e]);
   });
-
   items.forEach((item) => {
-    element.appendChild(item);
+    if (typeof item === 'string') {
+      element.appendChild(document.createTextNode(item));
+    } else {
+      element.appendChild(item);
+    }
   });
 
   return element;
