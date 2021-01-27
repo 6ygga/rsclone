@@ -39,12 +39,13 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js$/,
-        use: ['eslint-loader', 'source-map-loader'],
+        use: ['babel-loader', 'eslint-loader', 'source-map-loader'],
       },
     ],
   },
   plugins: [ // Array of plugins to apply to build chunk
     new HtmlWebpackPlugin({
+      filename: 'index.html',
       template: `${__dirname}/index.html`,
       inject: 'body',
     }),
