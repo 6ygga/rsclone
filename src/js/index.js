@@ -8,3 +8,4 @@ import UserAuth from './user-auth/user-auth';
 MainPage.initialize();
 UserAuth.initialize();
 EnglishMathApp.initialize();
+
