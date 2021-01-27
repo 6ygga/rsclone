@@ -8,7 +8,7 @@ export default class Statistics {
 
   init() {
     this.createWrapper();
-    this.renderStatistic(JSON.parse(localStorage.getItem('statistic')));
+    this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
   }
 
   createWrapper() {
@@ -20,7 +20,7 @@ export default class Statistics {
     return this.wrapper;
   }
 
-  renderStatistic(model) {
+  renderStatistics(model) {
     /* document.querySelector(".card-list").innerHTML = "";
     if(document.querySelector(".table-container") !== null){
         document.querySelector(".table-container").innerHTML="";
@@ -56,7 +56,7 @@ export default class Statistics {
     }
     table.appendChild(tbody);
     this.wrapper.appendChild(table);
-    this.createStatistic.bind(this)();
+    this.resetStatistics.bind(this)();
   }
 
   sortTable() {
@@ -70,7 +70,6 @@ export default class Statistics {
         a.children[position].innerHTML,
         b.children[position].innerHTML,
       );
-
       /* eslint-disable-next-line */
       for (const tBody of target.closest('table').tBodies) {
         tBody.append(...[...tBody.rows].sort(comparator(index, order)));
@@ -80,41 +79,44 @@ export default class Statistics {
         cell.classList.toggle('sorted', cell === target);
       }
     };
-    console.log(document.querySelectorAll('.table_sort thead'));
     document.querySelectorAll('.table_sort thead').forEach((tableTH) => tableTH.addEventListener('click', (event) => getSort(event)));
   }
 
-  createStatistic() {
+  clearStatistics() {
+    const keys = Object.keys(words);
+    const statisticsObj = {
+      word: [],
+      translation: [],
+      category: [],
+      click: [],
+      correct: [],
+      wrong: [],
+      errors: [],
+    };
+    for (let i = 0; i < keys.length; i += 1) {
+      for (let j = 0; j < words[keys[i]].length; j += 1) {
+        statisticsObj.word.push(words[keys[i]][j].word);
+        statisticsObj.translation.push(words[keys[i]][j].translation);
+        statisticsObj.category.push(keys[i]);
+        statisticsObj.click.push(0);
+        statisticsObj.correct.push(0);
+        statisticsObj.wrong.push(0);
+        statisticsObj.errors.push(0);
+      }
+    }
+    localStorage.setItem('statistics', JSON.stringify(statisticsObj));
+  }
+
+  resetStatistics() {
     /* eslint-disable-next-line */
     this.resetButton.onclick = function () {
       localStorage.clear();
-      const information = words;
-      const statistic = {
-        word: [],
-        translation: [],
-        category: [],
-        click: [],
-        correct: [],
-        wrong: [],
-        errors: [],
-      };
-      for (let i = 1; i < information.length; i += 1) {
-        for (let j = 0; j < information[i].length; j += 1) {
-          statistic.word.push(information[i][j].word);
-          statistic.translation.push(information[i][j].translation);
-          statistic.category.push(information[0][i - 1].name);
-          statistic.click.push(0);
-          statistic.correct.push(0);
-          statistic.wrong.push(0);
-          statistic.errors.push(0);
-        }
-      }
-      localStorage.setItem('statistic', JSON.stringify(statistic));
+      this.clearStatistics();
       // const wrapper = document.querySelector('.wrapper__card-list');
       // const container = document.querySelector('.table-container');
       // this.wrapper.removeChild(container);
       this.wrapper.innerHTML = '';
-      this.renderStatistic(JSON.parse(localStorage.getItem('statistic')));
-    };
+      this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+    }.bind(this);
   }
 }

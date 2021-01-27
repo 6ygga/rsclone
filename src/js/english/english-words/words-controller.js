@@ -36,15 +36,33 @@ export default class GameController {
       const element = elem;
       element.onclick = () => {
         element.childNodes[2].play();
-        /* const statistic = JSON.parse(localStorage.getItem('statistic'));
-        for (let i = 0; i < statistic.word.length; i += 1) {
-          if (element.childNodes[1].innerText === statistic.word[i]) {
-            statistic.click[i] += 1;
-          }
-        }
-        localStorage.setItem('statistic', JSON.stringify(statistic)); */
+        this.changeStatistics(element.childNodes[1].innerText, 'click');
       };
     });
+  }
+
+  changeStatistics(needElement, key) {
+    const statistics = JSON.parse(localStorage.getItem('statistics'));
+    for (let i = 0; i < statistics.word.length; i += 1) {
+      if (needElement === statistics.word[i]) {
+        if (key === 'click') {
+          statistics.click[i] += 1;
+        } else if (key === 'correct') {
+          statistics.correct[i] += 1;
+          if (statistics.wrong[i] === 0) {
+            statistics.errors[i] = 0;
+          } else {
+            statistics.errors[i] = ((statistics.wrong[i]
+                 / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
+          }
+        } else if (key === 'wrong') {
+          statistics.wrong[i] += 1;
+          statistics.errors[i] = ((statistics.wrong[i]
+               / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
+        }
+      }
+    }
+    localStorage.setItem('statistics', JSON.stringify(statistics));
   }
 
   rotateCard() {
@@ -146,19 +164,7 @@ export default class GameController {
             }, 500);
           }
           this.panelAnswer.appendChild(imgCorrect);
-          /* const statistic = JSON.parse(localStorage.getItem('statistic'));
-          for (let i = 0; i < statistic.word.length; i += 1) {
-            if (element.childNodes[1].firstChild.innerText === statistic.word[i]) {
-              statistic.correct[i] += 1;
-              if (statistic.wrong[i] === 0) {
-                statistic.errors[i] = 0;
-              } else {
-                statistic.errors[i] = ((statistic.wrong[i]
-                   / (statistic.correct[i] + statistic.wrong[i])) * 100).toFixed(1);
-              }
-            }
-          }
-          localStorage.setItem('statistic', JSON.stringify(statistic)); */
+          this.changeStatistics(element.childNodes[1].firstChild.innerText, 'correct');
         } else {
           this.isError = true;
           this.countMistakes += 1;
@@ -168,15 +174,7 @@ export default class GameController {
             this.audioError.play();
           }, 200);
           this.panelAnswer.appendChild(imgError);
-          /* const statistic = JSON.parse(localStorage.getItem('statistic'));
-          for (let i = 0; i < statistic.word.length; i += 1) {
-            if (element.childNodes[1].firstChild.innerText === statistic.word[i]) {
-              statistic.wrong[i] += 1;
-              statistic.errors[i] = ((statistic.wrong[i]
-                 / (statistic.correct[i] + statistic.wrong[i])) * 100).toFixed(3);
-            }
-          }
-          localStorage.setItem('statistic', JSON.stringify(statistic)); */
+          this.changeStatistics(element.childNodes[1].firstChild.innerText, 'wrong');
         }
         if (currentNumberOfSound === this.allCards.length) {
           this.endGame();
