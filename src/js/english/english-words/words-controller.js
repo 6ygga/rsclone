@@ -1,3 +1,5 @@
+import categories from './categories-data';
+
 const audioWord = new Audio();
 
 export default class GameController {
@@ -32,13 +34,27 @@ export default class GameController {
   }
 
   playSoundCard() {
-    this.allCards.forEach((elem) => {
-      const element = elem;
-      element.onclick = () => {
-        element.childNodes[2].play();
-        this.changeStatistics(element.childNodes[1].innerText, 'click');
-      };
+    const pathArray = location.hash.split('/');
+    const needCategory = pathArray[pathArray.length - 1];
+    if (this.checkWordsCategories(needCategory)) {
+      this.allCards.forEach((elem) => {
+        const element = elem;
+        element.onclick = () => {
+          element.childNodes[2].play();
+          this.changeStatistics(element.childNodes[1].innerText, 'click');
+        };
+      });
+    }
+  }
+
+  checkWordsCategories(needCategory) {
+    let flag = false;
+    categories.forEach((element) => {
+      if (element.name === needCategory) {
+        flag = true;
+      }
     });
+    return flag;
   }
 
   changeStatistics(needElement, key) {

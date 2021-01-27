@@ -20,7 +20,7 @@ export default class Fragment {
     element.classList.add('card-list__card');
     element.classList.add('card__train-mode');
     const linkMenu = document.createElement('a');
-    linkMenu.href = `#${this.model.name}`.replace(/set|[\s()]/g, '');
+    linkMenu.href = `/#/english/words/${this.model.name}`.replace(/set|[\s()]/g, '');
     linkMenu.classList.add('card__link');
     element.appendChild(linkMenu);
 
