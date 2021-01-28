@@ -8,6 +8,9 @@ export default class Statistics {
 
   init() {
     this.createWrapper();
+    if (JSON.parse(localStorage.getItem('statistics')) == null) {
+      this.clearStatistics();
+    }
     this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
     setTimeout(() => {
       this.sortTable();
