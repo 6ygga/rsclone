@@ -1,20 +1,22 @@
 .button-container{
-  display: flex;
-  justify-content: space-between;
+  @extend .d-flex;
+  @extend .justify-content-between;
   width: 300px;
+  //justify-content: space-between;
 }
 
 table {
+  @extend .text-center;
+  @extend .h-75;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
   border-collapse: collapse;
-  text-align: center;
   max-height: 700px;
-  height: 76%;
+  //height: 76%;
   }
   th{
-  background: #AFCDE7;
-  color: white;
+  @extend .bg-info;
+  @extend .text-white;
   padding: 10px 20px;
   }
   th, td {
@@ -23,10 +25,14 @@ table {
   border-color: white;
   }
   td {
-  background: #D8E6F3;
+  @extend .bg-light;
+  }
+  th:hover{
+    cursor: pointer;
+    opacity: 0.8;
   }
   th:first-child{
-  text-align: left;
+  @extend .text-left;
   }
   th.sorted[data-order="-1"]::after {
     content: "▼"
@@ -36,30 +42,15 @@ table {
     content: "▲"
   }
   .table-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .justify-content-center;
+    @extend .flex-column;
     overflow: auto;
     //overflow-y: auto;
-    height: 100%;
   }
-
-  .game-button:hover,.repeat-button:hover, .reset-button:hover, .repeatWord-button:hover{
-    background-color: blue;
-    cursor: pointer;
-  }
-  .reset-button, .repeatWord-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .game-button, .repeat-button, .reset-button, .repeatWord-button{
-    color: white;
-    background-color: black;
-    width: 100px;
-    height: 50px;
-    margin-bottom: 10px;
+  .reset-button {
+    @extend .mt-2;
   }
   @media(max-width:625px){
     .table-container {
