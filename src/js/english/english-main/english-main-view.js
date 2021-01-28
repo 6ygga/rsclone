@@ -1,4 +1,4 @@
-import './english-main-view.scss';
+import '../../../scss/english/english-main.scss';
 
 export default class EnglishMain {
   constructor() {
@@ -13,6 +13,11 @@ export default class EnglishMain {
     this.createStatisticsBlock();
   }
 
+  createPage() {
+    this.init();
+    return this.wrapper;
+  }
+
   createWrapper() {
     this.wrapper = document.createElement('div');
     this.wrapper.classList.add('english-main__wrapper');
@@ -22,7 +27,7 @@ export default class EnglishMain {
     this.wordsBlock = document.createElement('div');
     this.wordsBlock.classList.add('english-main__block');
     this.wordsBlock.innerHTML = `
-    <a href = "#categories">
+    <a href = "/#/english/words">
       <div class = "card-menu">
         <img src='assets/images/menu/categories.jpg'>
         <h3>Learn words</h3>
@@ -37,7 +42,7 @@ export default class EnglishMain {
     this.musicBlock = document.createElement('div');
     this.musicBlock.classList.add('english-main__block');
     this.musicBlock.innerHTML = `
-    <a href = "#music">
+    <a href = "/#/english/music">
       <div class = "card-menu">
         <img src='assets/images/menu/music.jpg'>
         <h3>Listen music</h3>
@@ -52,7 +57,7 @@ export default class EnglishMain {
     this.statisticsBlock = document.createElement('div');
     this.statisticsBlock.classList.add('english-main__block');
     this.statisticsBlock.innerHTML = `
-    <a href = "#statistics">
+    <a href = "/#/english/statistics">
       <div class = "card-menu">
         <img src='assets/images/menu/statistics.jpg'>
         <h3>See statistics</h3>

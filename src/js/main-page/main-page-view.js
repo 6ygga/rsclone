@@ -3,6 +3,7 @@ import EventEmitter from '../event-emitter';
 import {
   MAIN,
   MATH,
+  ENGLISH,
 } from '../constants/routes';
 
 export class MainPageView extends EventEmitter {
@@ -25,7 +26,7 @@ export class MainPageView extends EventEmitter {
       alt: 'English',
       width: '1100px',
     });
-    const englishLink = createDOMElement('a', { href: `${MAIN}` }, englishImg);
+    const englishLink = createDOMElement('a', { href: `${ENGLISH}` }, englishImg);
 
     const mathImg = createDOMElement('img', {
       src: 'assets/images/h9ij_ddcc_171126.jpg',
@@ -51,7 +52,7 @@ export class MainPageView extends EventEmitter {
     const brandLink = createDOMElement('a', { href: `${MAIN}`, class: 'navbar-brand' }, 'Clone', brandB);
 
     const mathLink = createDOMElement('a', { href: `${MATH}`, class: 'nav-item nav-link' }, 'Math');
-    const englishLink = createDOMElement('a', { href: `${MAIN}`, class: 'nav-item nav-link' }, 'English');
+    const englishLink = createDOMElement('a', { href: `${ENGLISH}`, class: 'nav-item nav-link' }, 'English');
     const navbarNav = createDOMElement('div', { class: 'navbar-nav' }, mathLink, englishLink);
 
     const controls = createDOMElement('div', { class: 'navbar-nav ml-auto action-buttons', id: 'authControls' }, this.renderLoginForm(), this.renderSignUpForm());

@@ -1333,7 +1333,7 @@ const words = {
       audioSrc: 'assets/music/person/wallet.mp3',
     },
   ],
-  сharacteristics: [
+  characteristics: [
     {
       word: 'colour',
       translation: 'характеристика',

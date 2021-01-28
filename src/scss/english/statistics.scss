@@ -9,7 +9,8 @@ table {
   font-size: 14px;
   border-collapse: collapse;
   text-align: center;
-  max-height: 500px;
+  max-height: 700px;
+  height: 76%;
   }
   th{
   background: #AFCDE7;
@@ -41,6 +42,7 @@ table {
     align-items: center;
     overflow: auto;
     //overflow-y: auto;
+    height: 100%;
   }
 
   .game-button:hover,.repeat-button:hover, .reset-button:hover, .repeatWord-button:hover{

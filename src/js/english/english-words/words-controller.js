@@ -1,3 +1,5 @@
+import categories from './categories-data';
+
 const audioWord = new Audio();
 
 export default class GameController {
@@ -32,13 +34,27 @@ export default class GameController {
   }
 
   playSoundCard() {
-    this.allCards.forEach((elem) => {
-      const element = elem;
-      element.onclick = () => {
-        element.childNodes[2].play();
-        this.changeStatistics(element.childNodes[1].innerText, 'click');
-      };
+    const pathArray = location.hash.split('/');
+    const needCategory = pathArray[pathArray.length - 1];
+    if (this.checkWordsCategories(needCategory)) {
+      this.allCards.forEach((elem) => {
+        const element = elem;
+        element.onclick = () => {
+          element.childNodes[2].play();
+          this.changeStatistics(element.childNodes[1].innerText, 'click');
+        };
+      });
+    }
+  }
+
+  checkWordsCategories(needCategory) {
+    let flag = false;
+    categories.forEach((element) => {
+      if (element.name === needCategory) {
+        flag = true;
+      }
     });
+    return flag;
   }
 
   changeStatistics(needElement, key) {
@@ -49,6 +65,7 @@ export default class GameController {
           statistics.click[i] += 1;
         } else if (key === 'correct') {
           statistics.correct[i] += 1;
+          statistics.click[i] += 1;
           if (statistics.wrong[i] === 0) {
             statistics.errors[i] = 0;
           } else {
@@ -57,6 +74,7 @@ export default class GameController {
           }
         } else if (key === 'wrong') {
           statistics.wrong[i] += 1;
+          statistics.click[i] += 1;
           statistics.errors[i] = ((statistics.wrong[i]
                / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
         }

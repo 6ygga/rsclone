@@ -1,8 +1,8 @@
-import './words.scss';
+import '../../../scss/english/words.scss';
 import Card from './card-view';
-import words from './words-data';
+// import words from './words-data';
 import GameController from './words-controller';
-import categories from './categories-data';
+// import categories from './categories-data';
 
 export default class CardList {
   constructor() {
@@ -31,7 +31,7 @@ export default class CardList {
     this.wrapper.appendChild(this.element);
   }
 
-  getCardList() {
+  createPage() {
     return this.wrapper;
   }
 
@@ -65,26 +65,25 @@ export default class CardList {
     if (model.length > this.countCards) {
       this.shuffle(model);
       this.switcherBlock.classList.remove('game-button__off');
-    } else {
-      this.switcherBlock.classList.add('game-button__off');
     }
 
     for (let i = 0; i < this.countCards; i += 1) {
       this.cards.push(new Card(this, model[i], i));
     }
-    this.personClick();
+    setTimeout(() => {
+      const gameController = new GameController();
+      gameController.init();
+    }, 500);
   }
 
-  personClick() {
+  /* personClick() {
     if (!this.count) {
       document.querySelector('.card-list').childNodes[0].addEventListener('click', () => {
         this.count += 1;
         this.render(words.сharacteristics);
-        const gameController = new GameController();
-        gameController.init();
       });
     }
-  }
+  } */
 
   createStarGameButton() {
     this.gameButton = document.createElement('div');
@@ -143,18 +142,20 @@ export default class CardList {
     modal.classList.add('finish-modal__close');
     modal.classList.add('success-modal');
     document.querySelector('body').appendChild(modal);
-    const close = document.createElement('span');
+    const close = document.createElement('a');
+    close.href = '/#/english/words';
     close.innerHTML = '&times;';
     close.classList.add('close-modal');
     const info = document.createElement('p');
     info.classList.add('info-modal');
     modal.appendChild(close);
     modal.appendChild(info);
+    /* eslint-disable-next-line */
     close.onclick = function () {
       modal.classList.remove('finish-modal__open');
       modal.classList.add('finish-modal__close-click');
-      this.render(categories);
-    }.bind(this);
+      // this.render(categories);
+    };
   }
 
   shuffle(arr) {

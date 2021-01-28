@@ -1,4 +1,4 @@
-import './music.scss';
+import '../../../scss/english/music.scss';
 import EnglishMusicController from './music-controller';
 
 export default class EnglishMusic {
@@ -9,16 +9,22 @@ export default class EnglishMusic {
   initContainer() {
     this.musicContainer = document.createElement('div');
     this.musicContainer.classList.add('musicContainer');
-    document.querySelector('body').appendChild(this.musicContainer);
     this.initAllElement();
+  }
+
+  createPage() {
+    this.initContainer();
+    return this.musicContainer;
   }
 
   initAllElement() {
     this.createLogo();
     this.createLeftBlock();
     this.createRightBlock();
-    const englishMusicController = new EnglishMusicController();
-    englishMusicController.init();
+    setTimeout(() => {
+      const englishMusicController = new EnglishMusicController();
+      englishMusicController.init();
+    }, 500);
   }
 
   createLogo() {

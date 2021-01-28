@@ -1,34 +1,34 @@
 const categories = [
   {
-    name: 'People',
+    name: 'people',
     image: 'assets/images/categories/person-min.jpg',
   },
   {
-    name: 'Characteristics',
+    name: 'characteristics',
     image: 'assets/images/categories/characteristics-min.jpg',
   },
   {
-    name: 'Time and Numbers',
+    name: 'timeAndNumbers',
     image: 'assets/images/categories/time and numbers-min.jpg',
   },
   {
-    name: 'Verbs and Lifestyle',
+    name: 'verbsAndLifestyle',
     image: 'assets/images/categories/verbs and lifestyle-min.jpg',
   },
   {
-    name: 'Food',
+    name: 'food',
     image: 'assets/images/categories/food-min.jpg',
   },
   {
-    name: 'Animals and Nature',
+    name: 'animalsAndNature',
     image: 'assets/images/categories/animals and nature-min.jpg',
   },
   {
-    name: 'Events and Places',
+    name: 'eventsAndPlaces',
     image: 'assets/images/categories/events and places-min.jpg',
   },
   {
-    name: 'Home',
+    name: 'home',
     image: 'assets/images/categories/home-min.jpg',
   },
 

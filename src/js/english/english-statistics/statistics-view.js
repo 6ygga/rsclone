@@ -1,4 +1,4 @@
-import './statistics.scss';
+import '../../../scss/english/statistics.scss';
 import words from '../english-words/words-data';
 
 export default class Statistics {
@@ -9,6 +9,9 @@ export default class Statistics {
   init() {
     this.createWrapper();
     this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+    setTimeout(() => {
+      this.sortTable();
+    }, 500);
   }
 
   createWrapper() {
@@ -16,7 +19,8 @@ export default class Statistics {
     this.wrapper.classList.add('table-container');
   }
 
-  getStatistics() {
+  createPage() {
+    this.init();
     return this.wrapper;
   }
 
