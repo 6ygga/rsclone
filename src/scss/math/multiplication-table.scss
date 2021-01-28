@@ -1,0 +1,66 @@
+.multiplication-table {
+  display: grid;
+  // width: 100%;
+  // height: 100%;
+  grid-template-areas:
+    'setting setting setting setting setting setting'
+    'multiplication multiplication multiplication table table table'
+    'buttons buttons buttons table table table';
+  grid-gap: 1rem;
+
+  .block-setting {
+    grid-area: setting;
+    display: grid;
+  }
+
+  .block-multiplication {
+    @extend .alert;
+    @extend .alert-info;
+    grid-area: multiplication;
+    margin: 0;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    font-weight: 900;
+
+    &__argument {
+
+    }
+
+    &__result {
+      margin-left: 5px;
+      width: 8rem;
+      border: none;
+      outline: none;
+    }
+  }
+
+  .block-buttons {
+    grid-area: buttons;
+    display: grid;
+    grid-template-columns: repeat(3, 4rem);
+    grid-template-rows: repeat(4, 4rem);
+    grid-gap: 0.5rem;
+
+    &__button {
+      @extend .btn;
+      font-size: 2rem;
+      font-weight: 600;
+
+      &-number {
+        @extend .btn-primary;
+      }
+
+      &-check {
+        @extend .btn-success;
+        grid-column: 2 / 4;
+      }
+    }
+  }
+
+  .block-table-result {
+    grid-area: table;
+    @extend .table;
+  }
+}

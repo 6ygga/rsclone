@@ -5,6 +5,7 @@ export default class MultiplicationTableView {
 
   #emitter;
 
+  // eslint-disable-next-line no-unused-vars
   constructor(model, elements) {
     this.#model = model;
     this.#emitter = new EventEmitter();

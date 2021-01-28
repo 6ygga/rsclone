@@ -1,7 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./reset.scss";
-@import "./math-main.scss";
 
 @import "./home-page.scss";
 @import "./navbar.scss";
 @import "./footer.scss";
+
+@import "./math/math-main.scss";
+@import "./math/multiplication-table.scss";

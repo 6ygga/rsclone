@@ -36,4 +36,29 @@ export default class MathMain {
 
     return card;
   }
+
+  static createBlockButtons() {
+    const buttonCheck = createDOMElement(
+      'button',
+      { class: 'block-buttons__button block-buttons__button-check', type: 'button' },
+      'CHECK',
+    );
+    const buttonsNumber = Array(10).fill(null).map((item, index) => {
+      const button = createDOMElement(
+        'button',
+        { class: 'block-buttons__button block-buttons__button-number', type: 'button' },
+        `${index}`,
+      );
+
+      return button;
+    });
+    const blockButtons = createDOMElement(
+      'div',
+      { class: 'block-buttons' },
+      ...buttonsNumber.reverse(),
+      buttonCheck,
+    );
+
+    return blockButtons;
+  }
 }
