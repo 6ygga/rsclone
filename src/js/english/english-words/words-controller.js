@@ -65,6 +65,7 @@ export default class GameController {
           statistics.click[i] += 1;
         } else if (key === 'correct') {
           statistics.correct[i] += 1;
+          statistics.click[i] += 1;
           if (statistics.wrong[i] === 0) {
             statistics.errors[i] = 0;
           } else {
@@ -73,6 +74,7 @@ export default class GameController {
           }
         } else if (key === 'wrong') {
           statistics.wrong[i] += 1;
+          statistics.click[i] += 1;
           statistics.errors[i] = ((statistics.wrong[i]
                / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
         }

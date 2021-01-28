@@ -64,8 +64,8 @@ export default class CardList {
     switcher.classList.add('switcher__off'); */
     if (model.length > this.countCards) {
       this.shuffle(model);
+      this.switcherBlock.classList.remove('game-button__off');
     }
-    this.switcherBlock.classList.remove('game-button__off');
 
     for (let i = 0; i < this.countCards; i += 1) {
       this.cards.push(new Card(this, model[i], i));
