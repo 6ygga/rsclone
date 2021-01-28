@@ -1,4 +1,3 @@
-import '../../../scss/english/words.scss';
 import Card from './card-view';
 // import words from './words-data';
 import GameController from './words-controller';

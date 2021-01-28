@@ -1,5 +1,3 @@
-import '../../../scss/english/english-main.scss';
-
 export default class EnglishMain {
   constructor() {
     this.countCards = 3;

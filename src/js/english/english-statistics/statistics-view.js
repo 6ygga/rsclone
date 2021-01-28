@@ -1,4 +1,3 @@
-import '../../../scss/english/statistics.scss';
 import words from '../english-words/words-data';
 
 export default class Statistics {

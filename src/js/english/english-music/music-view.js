@@ -1,4 +1,3 @@
-import '../../../scss/english/music.scss';
 import EnglishMusicController from './music-controller';
 
 export default class EnglishMusic {
