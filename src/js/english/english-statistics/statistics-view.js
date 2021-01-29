@@ -45,6 +45,7 @@ export default class Statistics {
     tr = document.createElement('tr');
     for (let i = 0; i < Object.keys(model).length; i += 1) {
       th = document.createElement('th');
+      th.classList.add('table_sort__th');
       tr.appendChild(th);
       th.innerText = Object.keys(model)[i];
     }
@@ -55,6 +56,7 @@ export default class Statistics {
       tr = document.createElement('tr');
       for (cell = 0; cell < Object.keys(model).length; cell += 1) {
         td = document.createElement('td');
+        td.classList.add('table_sort__td');
         tr.appendChild(td);
         td.innerText = model[Object.keys(model)[cell]][row];
       }
