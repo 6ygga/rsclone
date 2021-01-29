@@ -141,14 +141,17 @@ export default class CardList {
     modal.classList.add('finish-modal__close');
     modal.classList.add('success-modal');
     document.querySelector('body').appendChild(modal);
+    const container = document.createElement('div');
+    container.classList.add('container-modal');
     const close = document.createElement('a');
     close.href = '/#/english/words';
     close.innerHTML = '&times;';
     close.classList.add('close-modal');
     const info = document.createElement('p');
     info.classList.add('info-modal');
-    modal.appendChild(close);
-    modal.appendChild(info);
+    container.appendChild(close);
+    container.appendChild(info);
+    modal.appendChild(container);
     /* eslint-disable-next-line */
     close.onclick = function () {
       modal.classList.remove('finish-modal__open');

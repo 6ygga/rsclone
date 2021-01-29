@@ -139,8 +139,8 @@
 .close-modal {
   @extend .position-absolute;
   @extend .font-weight-bold;
-  top:38%;
-  left: 67%;
+  top: -6%;
+  left: 94%;
   font-size: 28px;
 }
 .close-modal:hover,
@@ -158,11 +158,11 @@
   @extend .justify-content-center;
   @extend .text-white;
   @extend .text-center;
-  width: 40%;
+  /*width: 40%;
   height: 20%;
   padding: 20px;
   border: 1px solid #888;
-  font-size: 30px;
+  font-size: 30px;*/
 }
 
 .finish-modal__close{
@@ -215,4 +215,14 @@
 }
 .card__link {
   color:rgb(0, 0, 0) !important;
+}
+
+.container-modal {
+  width: 40%;
+  @extend .position-relative;
+  min-width: 308px;
+  height: 20%;
+  padding: 20px;
+  border: 1px solid #888;
+  font-size: 30px;
 }
