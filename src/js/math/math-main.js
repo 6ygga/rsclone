@@ -41,7 +41,7 @@ export default class MathMain {
     const buttonCheck = createDOMElement(
       'button',
       { class: 'block-buttons__button block-buttons__button-check', type: 'button' },
-      'CHECK',
+      'Проверить',
     );
     const buttonsNumber = Array(10).fill(null).map((item, index) => {
       const button = createDOMElement(
