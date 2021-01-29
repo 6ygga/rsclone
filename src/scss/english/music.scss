@@ -6,7 +6,7 @@
   @extend .align-items-center;
   @extend .justify-content-center;
   @extend .bg-info;
-  min-height: 624px;
+  min-height: 637px;
 }
 
 .block-right__panel button {
@@ -42,7 +42,7 @@
 .block-right__track-image{
   height: 250px;
   @extend .w-50;
-  min-width: 310px;
+  min-width: 288px;
   border-radius: 15px;
   box-shadow: 1px 0px 20px 12px rgba(240,240,240,0.2);
 }
@@ -86,20 +86,18 @@ input[type="range"]::-webkit-slider-thumb{
 .volume__icon{
   cursor: pointer;
   padding: 8px 12px;
-  width: 20px;
+  width: 35px;
   @extend .text-center;
 }
 
 .volume__icon:hover {
   @extend .bg-secondary;
-  // background-color: rgba(255,255,255,0.4);
 }
 
 .volume__show{
   padding: 8px 12px;
   margin-right: 5px;
   @extend .bg-secondary;
-  // background-color: rgba(255,255,255,0.4);
   width: 50px;
   @extend .text-center;
 }
@@ -124,7 +122,6 @@ input[type="range"]::-webkit-slider-thumb{
   outline: none;
   transition: 0.5;
   @extend .bg-secondary;
-  //background-color: rgba(255,255,255,0.4)
 }
 
 .block-right__song-title{
@@ -164,7 +161,6 @@ input[type="range"]::-webkit-slider-thumb{
 	padding: 10px 14px;
   @extend .text-white;
   @extend .bg-secondary;
-	//background: rgba(255,255,255,0.2);
 	outline: none;
 	border-radius: 10px;
 }
@@ -173,11 +169,9 @@ input[type="range"]::-webkit-slider-thumb{
 }
 .panel__play{
   @extend .bg-danger;
-	//background: #FF8A65;
 }
 .musicContainer__block-right button:hover{
   @extend .bg-danger;
-	//background: #FF8A65;
 }
 .musicContainer__block-right i:before{
   @extend .text-white;
@@ -224,7 +218,7 @@ input[type="range"]::-webkit-slider-thumb{
 
 @media(max-width: 660px) {
   .musicContainer__block-left{
-    display: none;
+    display: none !important;
   }
   .musicContainer__block-right{
    width: 100%;
@@ -241,12 +235,13 @@ input[type="range"]::-webkit-slider-thumb{
   }
   .block-right__panel{
     margin-top: 10px;
+    width: 200px !important;
   }
   .block-right__auto{
     margin-top: 17px;
   }
   .musicContainer {
-    min-height: 545px;
+    min-height: 590px;
   }
 }
 

@@ -17,6 +17,7 @@
 }
 .card-list__card{
   @extend .mb-2;
+  @extend .bg-light;
   list-style-type: none;
   transition: 0.2s all ease;
   user-select: none;
@@ -36,7 +37,7 @@
   border: 2px solid black;
 }
 .card__game-mode{
-  border: 2px solid rgb(1, 247, 1);
+  border: 2px solid rgb(5, 145, 0);
   height: 284px;
 }
 
@@ -211,4 +212,7 @@
 .switcher__info{
   user-select: none;
   font-size: 14px;
+}
+.card__link {
+  color:rgb(0, 0, 0) !important;
 }
