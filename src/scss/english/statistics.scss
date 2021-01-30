@@ -1,65 +1,56 @@
 .button-container{
-  display: flex;
-  justify-content: space-between;
+  @extend .d-flex;
+  @extend .justify-content-between;
   width: 300px;
+  //justify-content: space-between;
 }
 
-table {
+.table_sort {
+  @extend .text-center;
+  @extend .h-75;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
   border-collapse: collapse;
-  text-align: center;
   max-height: 700px;
-  height: 76%;
+  //height: 76%;
   }
-  th{
-  background: #AFCDE7;
-  color: white;
+ .table_sort__th{
+  @extend .bg-info;
+  @extend .text-white;
   padding: 10px 20px;
   }
-  th, td {
+ .table_sort__th, .table_sort__td {
   border-style: solid;
   border-width: 0 1px 1px 0;
   border-color: white;
   }
-  td {
-  background: #D8E6F3;
+  .table_sort__td {
+  @extend .bg-light;
   }
-  th:first-child{
-  text-align: left;
+  .table_sort__th:hover{
+    cursor: pointer;
+    opacity: 0.8;
   }
-  th.sorted[data-order="-1"]::after {
+  .table_sort__th:first-child{
+  @extend .text-left;
+  }
+  .table_sort__th.sorted[data-order="-1"]::after {
     content: "▼"
   }
 
-  th.sorted[data-order="1"]::after {
+  .table_sort__th.sorted[data-order="1"]::after {
     content: "▲"
   }
   .table-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .justify-content-center;
+    @extend .flex-column;
     overflow: auto;
     //overflow-y: auto;
-    height: 100%;
   }
-
-  .game-button:hover,.repeat-button:hover, .reset-button:hover, .repeatWord-button:hover{
-    background-color: blue;
-    cursor: pointer;
-  }
-  .reset-button, .repeatWord-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .game-button, .repeat-button, .reset-button, .repeatWord-button{
-    color: white;
-    background-color: black;
-    width: 100px;
-    height: 50px;
-    margin-bottom: 10px;
+  .reset-button {
+    @extend .mt-2;
   }
   @media(max-width:625px){
     .table-container {

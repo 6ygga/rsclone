@@ -179,6 +179,12 @@ export default class englishMusicController {
     }
   }
 
+  finishAudio() {
+    window.addEventListener('hashchange', () => {
+      this.track.pause();
+    });
+  }
+
   init() {
     this.volumeIcon.addEventListener('click', this.muteSound.bind(this));
     this.recentVolume.addEventListener('change', this.volumeChange.bind(this));
@@ -187,6 +193,7 @@ export default class englishMusicController {
     this.next.addEventListener('click', this.nextSong.bind(this));
     this.slider.addEventListener('change', this.changeDuration.bind(this));
     this.autoPlay.addEventListener('click', this.autoPlaySwitch.bind(this));
+    this.finishAudio();
     this.loadTrack(this.index);
   }
 }
