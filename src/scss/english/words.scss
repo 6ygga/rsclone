@@ -147,7 +147,7 @@
 .panel-answer__on{
   @extend .d-flex;
   @extend .align-items-center;
-  @extend .justify-content-center;
+  justify-content: flex-end;
 }
 .success-modal{
   @extend .d-flex;

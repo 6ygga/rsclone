@@ -114,7 +114,7 @@ export default class englishMusicController {
       this.volumeIcon.classList.add('fa-volume-off');
     } else {
       this.track.volume = localStorage.getItem('volume');
-      this.volumeShow.innerHTML = (this.track.volume * 100).toFixed(1);
+      this.volumeShow.innerHTML = Math.round(this.track.volume * 100);
       this.volumeIcon.classList.add('fa-volume-up');
       this.volumeIcon.classList.remove('fa-volume-off');
     }
@@ -163,7 +163,7 @@ export default class englishMusicController {
 
   volumeChange() {
     this.mute = false;
-    this.volumeShow.innerHTML = this.recentVolume.value.toFixed(1);
+    this.volumeShow.innerHTML = Math.round(this.recentVolume.value);
     this.track.volume = this.recentVolume.value / 100;
   }
 
