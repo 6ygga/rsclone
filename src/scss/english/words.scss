@@ -22,8 +22,18 @@
   transition: 0.2s all ease;
   user-select: none;
 }
+
+@keyframes hover-card {
+  0% {
+   box-shadow: 5px 5px 0 rgb(0, 0, 255);
+  }
+  100% {
+    box-shadow: 5px 5px 0 rgb(0, 255, 0);
+  }
+}
 .card-list__card:hover{
-  box-shadow: 5px 5px 0 rgb(0, 0, 0);
+  //box-shadow: 5px 5px 0 rgb(0, 0, 0);
+  animation: hover-card 1s linear infinite;
 }
 .card-list__container-flex {
   @extend .d-flex;
@@ -90,7 +100,27 @@
   @extend .align-items-center;
   @extend .justify-content-center;
 }
+.game-button,.repeat-button {
+  animation: change-button 2s linear;
+  animation: text-button 1s linear infinite;
+}
+@keyframes text-button {
+  0% {
+    font-size: 14px;
+  }
+  100% {
+    font-size: 16px;
+  }
+}
 
+@keyframes change-button {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .game-button__on{
   @extend .d-flex;
   @extend .align-items-center;

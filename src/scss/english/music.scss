@@ -162,7 +162,13 @@ input[type="range"]::-webkit-slider-thumb{
   @extend .text-white;
   @extend .bg-secondary;
 	outline: none;
-	border-radius: 10px;
+  border-radius: 10px;
+}
+.block-right__auto-off{
+  background-color: rgba(255,255,255,0.2) !important;
+}
+.block-right__auto-active{
+  background-color: rgba(255,0,0,0.8) !important;
 }
 .block-right__auto i{
 	margin-left: 8px;

@@ -68,7 +68,7 @@ export default class EnglishMusic {
       <div class = 'block-right__duration'>
         <input type = 'range' min = '0' max = '100' value = '0' class = 'duration__slider'>
       </div>
-      <button class = 'block-right__auto'>Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+      <button class = 'block-right__auto block-right__auto-off'>Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
     `;
     this.musicContainer.appendChild(this.rightBlock);
   }
