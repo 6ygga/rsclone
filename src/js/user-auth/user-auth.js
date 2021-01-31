@@ -1,5 +1,4 @@
-import { authUser, signUpUser } from '../services/user-service';
-
+import { AuthController } from './auth-controller';
 const { default: EventEmitter } = require('../EventEmitter');
 
 const storageName = 'userData';
@@ -69,7 +68,9 @@ class UserAuth extends EventEmitter {
     } catch (error) {
       this.emit('signUpError', error);
     }
+export default class UserAuth {
+  static initialize() {
+    // eslint-disable-next-line no-unused-vars
+    const authController = new AuthController();
   }
 }
-
-export const userAuth = new UserAuth();

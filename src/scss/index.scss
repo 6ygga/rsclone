@@ -1,3 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
-@import "../../reset.css";
+@import "./reset.scss";
 @import "./math-main.scss";
+
+@import "./home-page.scss";
+@import "./navbar.scss";
+@import "./footer.scss";
+
+@import "./english/english-main.scss";
+@import "./english/music.scss";
+@import "./english/statistics.scss";
+@import "./english/words.scss";
