@@ -22,3 +22,15 @@ export const signUpUser = async (userData) => fetch('https://rsclone-back.heroku
       preference: 'user',
     }),
   });
+
+export const saveStatistics = async (statistics, token) => fetch('https://rsclone-back.herokuapp.com/userdata',
+  {
+    method: 'POST',
+    headers: {
+      'content-Type': 'application/json;charset=UTF-8',
+      authorisation: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      data: statistics,
+    }),
+  });
