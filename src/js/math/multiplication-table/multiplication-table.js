@@ -6,18 +6,48 @@ import MultiplicationTableController from './multiplication-table-controller';
 import MathMain from '../math-main';
 
 export default class MultiplicationTable {
+  static multiplicand;
+
+  static multiplier;
+
+  static result;
+
+  static buttonCheck;
+
+  static buttonsNumber;
+
+  static table;
+
+  static buttonStart;
+
+  static buttonGroupSetting;
+
+  static progressBar;
+
   static initialize() {
     const model = new MultiplicationTableModel();
-    const view = new MultiplicationTableView(model);
+    const view = new MultiplicationTableView(model, {
+      multiplicand: MultiplicationTable.multiplicand,
+      multiplier: MultiplicationTable.multiplier,
+      result: MultiplicationTable.result,
+      buttonCheck: MultiplicationTable.buttonCheck,
+      buttonsNumber: MultiplicationTable.buttonsNumber,
+      table: MultiplicationTable.table,
+      buttonStart: MultiplicationTable.buttonStart,
+      buttonGroupSetting: MultiplicationTable.buttonGroupSetting,
+      progressBar: MultiplicationTable.progressBar,
+    });
     // eslint-disable-next-line no-unused-vars
     const controller = new MultiplicationTableController(model, view);
+
+    view.show();
   }
 
   static createPage() {
-    const blockButtons = MathMain.createBlockButtons();
+    const { blockButtons, buttonCheck, buttonsNumber } = MathMain.createBlockButtons();
     const blockSetting = MultiplicationTable.createBlockSetting();
     const blockMultiplication = MultiplicationTable.createBlockMultiplication();
-    const blockTableResult = MultiplicationTable.createBlockTableResult();
+    const { blockTableResult, table } = MathMain.createBlockTableResult(TableResultNameCol);
     const blockProgress = MultiplicationTable.createBlockProgress();
     const multiplicationTable = createDOMElement(
       'section',
@@ -29,6 +59,9 @@ export default class MultiplicationTable {
       blockProgress,
     );
 
+    MultiplicationTable.buttonCheck = buttonCheck;
+    MultiplicationTable.buttonsNumber = buttonsNumber;
+    MultiplicationTable.table = table;
     MultiplicationTable.initialize();
 
     return multiplicationTable;
@@ -39,7 +72,8 @@ export default class MultiplicationTable {
       'button',
       {
         type: 'button',
-        'data-check': 'false',
+        'data-check': 'true',
+        'data-number': `${index + 2}`,
       },
       `${index + 2}`,
     ));
@@ -54,6 +88,9 @@ export default class MultiplicationTable {
     const buttonStart = createDOMElement('button', { class: 'block-setting__button-start' }, 'Старт');
     const setting = createDOMElement('div', { class: 'block-setting' }, buttonGroup, buttonStart);
 
+    MultiplicationTable.buttonGroupSetting = buttons;
+    MultiplicationTable.buttonStart = buttonStart;
+
     return setting;
   }
 
@@ -67,6 +104,7 @@ export default class MultiplicationTable {
       {
         class: 'block-multiplication__result',
         type: 'text',
+        maxLength: '2',
         placeholder: '?',
       },
     );
@@ -80,18 +118,11 @@ export default class MultiplicationTable {
       result,
     );
 
+    MultiplicationTable.multiplicand = multiplicand;
+    MultiplicationTable.multiplier = multiplier;
+    MultiplicationTable.result = result;
+
     return blockMultiplication;
-  }
-
-  static createBlockTableResult() {
-    const th = TableResultNameCol.map((item) => createDOMElement('th', { scope: 'col' }, `${item}`));
-    const tr = createDOMElement('tr', {}, ...th);
-    const thead = createDOMElement('thead', {}, tr);
-    const tbody = createDOMElement('tbody', {});
-    const table = createDOMElement('table', { class: 'block-table-result__table' }, thead, tbody);
-    const tableResult = createDOMElement('div', { class: 'block-table-result' }, table);
-
-    return tableResult;
   }
 
   static createBlockProgress() {
@@ -103,6 +134,8 @@ export default class MultiplicationTable {
       },
     );
     const progress = createDOMElement('div', { class: 'block-progress' }, progressBar);
+
+    MultiplicationTable.progressBar = progressBar;
 
     return progress;
   }

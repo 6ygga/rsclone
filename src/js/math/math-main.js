@@ -59,6 +59,21 @@ export default class MathMain {
       buttonCheck,
     );
 
-    return blockButtons;
+    return {
+      blockButtons,
+      buttonCheck,
+      buttonsNumber,
+    };
+  }
+
+  static createBlockTableResult(nameCol) {
+    const columns = nameCol.map((item) => createDOMElement('div', { class: 'block-table-result__table_column' }, `${item}`));
+    const table = createDOMElement('table', { class: 'block-table-result__table' }, ...columns);
+    const blockTableResult = createDOMElement('div', { class: 'block-table-result' }, table);
+
+    return {
+      blockTableResult,
+      table,
+    };
   }
 }

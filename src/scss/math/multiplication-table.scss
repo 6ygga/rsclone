@@ -4,6 +4,10 @@
   padding: 1rem;
 }
 
+%button {
+  height: 2rem;
+}
+
 .multiplication-table {
   @extend .container;
   padding-top: 1rem;
@@ -17,13 +21,15 @@
     'buttons buttons table table table table'
     'setting setting setting setting setting setting'
     'progress progress progress progress progress progress';
-  grid-gap: 1rem;
+  grid-gap: 1rem;  
 
   .block-setting {
     grid-area: setting;
+    height: 100%;
     display: grid;
+    align-self: center;    
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0.5rem;
+    grid-gap: 1rem;
 
     &__button-group {
       @extend .btn-group;
@@ -31,22 +37,20 @@
 
       & button {
         @extend .btn;
+        @extend .btn-outline-warning;
+        border-top-width: 1px;
         font-size: 2rem;
         font-weight: 600;
 
         &[data-check='true'] {
-          @extend .btn-secondary;
-        }
-
-        &[data-check='false'] {
-          @extend .btn-outline-secondary;
-        }
+          @extend .btn-warning;
+        }        
       }
     }
 
     &__button-start {
       @extend .btn;
-      @extend .btn-danger;
+      @extend .btn-primary;
       grid-column: 4 / 5;
       font-size: 2rem;
       font-weight: 600;
@@ -54,9 +58,9 @@
   }
 
   .block-multiplication {
-    @extend .alert-primary;
-    @extend %block-wrapper;
-    grid-area: multiplication;
+    @extend .alert-info;
+    @extend %block-wrapper;    
+    grid-area: multiplication;    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,14 +74,17 @@
     &__result {
       margin-left: 5px;
       width: 6rem;
-      background-color: #cce5ff;
+      background-color: #75caeb;
       border: none;
       outline: none;
+      caret-color: transparent;
     }
   }
 
   .block-buttons {
     grid-area: buttons;
+    height: 100%;
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
@@ -89,31 +96,46 @@
       font-weight: 600;
 
       &-number {
-        @extend .btn-primary;
+        @extend .btn-secondary;
       }
 
       &-check {
-        @extend .btn-success;
+        @extend .btn-primary;
         grid-column: 2 / 4;
       }
     }
   }
 
-  .block-table-result {
-    @extend .alert-warning;
-    @extend %block-wrapper;
-    grid-area: table;
+  .block-table-result {        
+    grid-area: table;    
+    height: calc(100vh - 19.5rem);
+    overflow: auto;
 
     &__table {
-      @extend .table;
-      @extend .table-warning;
-      @extend .table-borderless;
-      margin: 0;
+      display: grid;    
+      grid-template-columns: 40% 30% 30%;
+      height: max-content;          
 
-      & > thead th {
-        border: none;
+      &_column {   
+        @extend .alert;
+        @extend .alert-info; 
+        margin: 0;           
+        padding: 0.25rem;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: 600;
+
+        &[data-correct='true'] {
+          @extend .alert-success;
+        }
+
+        &[data-correct=''] {
+          @extend .alert-danger;
+        }
       }
-    }
+    }    
   }
 
   .block-progress {
@@ -124,7 +146,8 @@
 
     &__progress-bar {
       @extend .progress-bar;
-      width: 50%;
+      @extend .bg-success;
+      width: 0;
     }
   }
 }
