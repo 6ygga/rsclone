@@ -1,6 +1,6 @@
 import categories from './categories-data';
 import { userAuthModel } from '../../user-auth/user-auth-model';
-import { saveStatistics, getStatistics } from '../../services/user-service';
+import { saveStatistics } from '../../services/user-service';
 
 const audioWord = new Audio();
 
@@ -85,11 +85,6 @@ export default class GameController {
     localStorage.setItem('statistics', JSON.stringify(statistics));
     if (userAuthModel.isAuthenticated()) {
       saveStatistics(JSON.stringify(statistics), userAuthModel.getToken());
-      getStatistics(userAuthModel.getToken()).then((response) => response.json()).then((text) => {
-        console.log(JSON.parse(text.data));
-      }).catch((e) => {
-        console.log(e);
-      });
     }
   }
 
