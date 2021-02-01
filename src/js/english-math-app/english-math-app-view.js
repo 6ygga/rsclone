@@ -1,8 +1,6 @@
 import EventEmitter from '../event-emitter';
 import MathMain from '../math/math-main';
-import Fractions from '../math/fractions/fractions';
 import MultiplicationTable from '../math/multiplication-table/multiplication-table';
-import TimeGame from '../math/time-game/time-game';
 import VerbalCounting from '../math/verbal-counting/verbal-counting';
 import * as paths from '../constants/routes';
 import { clearElement } from '../dom-elements-helpers';
@@ -38,11 +36,7 @@ export default class EnglishMathAppView {
         break;
       case paths.MATH: this.render(MathMain.createPage());
         break;
-      case paths.FRACTIONS: this.render(Fractions.createPage());
-        break;
       case paths.MULTIPLICATION_TABLE: this.render(MultiplicationTable.createPage());
-        break;
-      case paths.TIME_GAME: this.render(TimeGame.createPage());
         break;
       case paths.VERBAL_COUNTING: this.render(VerbalCounting.createPage());
         break;

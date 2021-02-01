@@ -1,10 +1,15 @@
-@import "~bootstrap/scss/bootstrap";
 @import "./reset.scss";
-@import "./math-main.scss";
+@import "~bootswatch/dist/lumen/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/lumen/bootswatch";
 
 @import "./home-page.scss";
 @import "./navbar.scss";
 @import "./footer.scss";
+
+@import "./math/math-main.scss";
+@import "./math/multiplication-table.scss";
+@import "./math/verbal-counting.scss";
 
 @import "./english/english-main.scss";
 @import "./english/music.scss";
