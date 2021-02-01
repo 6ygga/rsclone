@@ -37,5 +37,14 @@
 }
 
 .english-main__block:hover{
-  box-shadow: 5px 5px 0 rgb(0, 0, 0);
+  animation: hover-card 1s linear infinite;
+}
+
+@keyframes hover-card {
+  0% {
+   box-shadow: 5px 5px 0 rgb(0, 0, 255);
+  }
+  100% {
+    box-shadow: 5px 5px 0 rgb(0, 255, 0);
+  }
 }

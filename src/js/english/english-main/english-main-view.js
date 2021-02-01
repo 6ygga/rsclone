@@ -29,7 +29,7 @@ export default class EnglishMain {
       <div class = "card-menu">
         <img src='assets/images/menu/categories.jpg'>
         <h3>Learn words</h3>
-        <p>There are 2 modes of play and training, words with errors will appear for repetition</p>
+        <p>There are 2 modes of play and training, 1000 of the most important words in the English language</p>
       </div>
     </a>
     `;

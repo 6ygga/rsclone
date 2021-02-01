@@ -125,6 +125,9 @@ export default class Statistics {
       // this.wrapper.removeChild(container);
       this.wrapper.innerHTML = '';
       this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+      setTimeout(() => {
+        this.sortTable();
+      }, 500);
     }.bind(this);
   }
 }
