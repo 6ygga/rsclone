@@ -19,7 +19,6 @@ export default class MultiplicationTableModel {
   #progress;
 
   constructor() {
-    localStorage.clear();
     const save = this.readeLocaleStorage();
 
     this.#emitter = new EventEmitter();
