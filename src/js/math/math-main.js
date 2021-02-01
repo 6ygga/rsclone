@@ -1,10 +1,9 @@
 import createDOMElement from '../create-dom-element';
 import { Simulators } from '../constants/math-simulators';
 import {
-  FRACTIONS,
   MULTIPLICATION_TABLE,
-  TIME_GAME,
   VERBAL_COUNTING,
+  MATH_STATISTICS,
 } from '../constants/routes';
 
 export default class MathMain {
@@ -16,23 +15,34 @@ export default class MathMain {
   }
 
   static createCardsLinks() {
-    const routs = [FRACTIONS, MULTIPLICATION_TABLE, TIME_GAME, VERBAL_COUNTING];
-    const cardLinks = Simulators.map((item, index) => {
-      const card = MathMain.createCard(item);
-      const link = createDOMElement('a', { class: 'link', href: `${routs[index]}` }, card);
+    const cardMultiplicationTable = MathMain.createCard(Simulators[0], String.fromCharCode(215));
+    const cardVerbalCounting = MathMain.createCard(Simulators[1], '1');
+    const cardMathStatistics = MathMain.createCard('statistics', '?');
+    const linkMultiplicationTable = createDOMElement(
+      'a',
+      { class: 'link', href: `${MULTIPLICATION_TABLE}` },
+      cardMultiplicationTable,
+    );
+    const linkVerbalCounting = createDOMElement(
+      'a',
+      { class: 'link', href: `${VERBAL_COUNTING}` },
+      cardVerbalCounting,
+    );
+    const linkMathStatistics = createDOMElement(
+      'a',
+      { class: 'link', href: `${MATH_STATISTICS}` },
+      cardMathStatistics,
+    );
 
-      return link;
-    });
-
-    return cardLinks;
+    return [linkMultiplicationTable, linkVerbalCounting, linkMathStatistics];
   }
 
-  static createCard(simulator) {
-    const title = createDOMElement('h5', { class: 'card-link__title' });
-    const body = createDOMElement('div', { class: 'card-link__body' }, title);
-    const card = createDOMElement('div', { class: 'card-link' }, body);
+  static createCard(simulator, symbol) {
+    const title = createDOMElement('h3', { class: 'card-link__title' });
+    const body = createDOMElement('div', { class: 'card-link__body' }, symbol);
+    const card = createDOMElement('div', { class: `card-link card-link__${simulator}` }, title, body);
 
-    title.innerText = simulator;
+    title.innerText = simulator.split('-').join(' ');
 
     return card;
   }

@@ -1,32 +1,107 @@
 .math {
-  @extend .container;
   padding: 1rem;
   display: grid;
   height: 100%;
   grid-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(1, 100%);
+  }
 }
 
 .link {
   margin: 0 auto;
   align-self: center;
   justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
 
 .card-link {
-  @extend .card;
-  width: 100%;
-  height: 100%;
+  @extend .btn;
+  @extend .shadow-sm;
+  width: 18rem;
+  height: 32rem;
+  border-width: 0.1rem 0.5rem 0.5rem 0.1rem;
+  transition: all 0.5s ease;
+
+  @media (max-width: 576px) {
+    height: 20rem;
+  }
+
+  &:hover {
+    border-width: 0.1rem 0.25rem 0.25rem 0.1rem;
+  }
+
+  & h3 {
+    height: 4rem;
+    font-weight: 900;
+    transition: all 0.5s ease;
+
+    @media (max-width: 576px) {
+      height: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__multiplication-table {
+    border-color: #D50000;
+    background-color: #FF1744;
+
+    &:hover{
+      background-color: #FF5252;
+    }
+  }
+
+  &__verbal-counting {
+    border-color: #6200EA;
+    background-color: #651FFF;
+
+    &:hover{
+      background-color: #3D5AFE;
+    }
+  }
+
+  &__statistics {
+    border-color: #FFD600;
+    background-color: #FFFF00;
+
+    &:hover{
+      background-color: #FFEA00;
+    }
+  }
 
   &__body {
-    @extend .card-body;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20rem;
+    color: white;
+    text-shadow: 0 1px 0 #ccc,
+      0 2px 0 #c9c9c9,
+      0 3px 0 #bbb,
+      0 4px 0 #b9b9b9,
+      0 5px 0 #aaa,
+      0 6px 1px rgba(0,0,0,.1),
+      0 0 5px rgba(0,0,0,.1),
+      0 1px 3px rgba(0,0,0,.3),
+      0 3px 5px rgba(0,0,0,.2),
+      0 5px 10px rgba(0,0,0,.25),
+      0 10px 10px rgba(0,0,0,.2),
+      0 20px 20px rgba(0,0,0,.15);
+
+    @media (max-width: 576px) {
+      font-size: 15rem;
+    }
   }
 
   &__title {
-    @extend .card-title;
     text-align: center;
+    text-transform: uppercase;
   }
 }
