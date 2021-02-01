@@ -1,5 +1,5 @@
 const Simulators = ['multiplication-table', 'verbal-counting'];
-const TableResultNameCol = ['Пример', 'Решение', 'Ответ'];
+const TableResultNameCol = ['Example', 'Solution', 'Response'];
 const Actions = [43, 8722, 215, 247];
 const Complexity = [2, 3, 4, 5];
 

@@ -94,7 +94,7 @@ export default class VerbalCounting {
       { class: 'block-setting__button-group', role: 'group' },
       ...complexityButtons,
     );
-    const buttonStart = createDOMElement('button', { class: 'block-setting__button-start' }, 'Старт');
+    const buttonStart = createDOMElement('button', { class: 'block-setting__button-start' }, 'Start');
     const setting = createDOMElement('div', { class: 'block-setting' }, actions, complexity, buttonStart);
 
     VerbalCounting.actionButtons = actionButtons;

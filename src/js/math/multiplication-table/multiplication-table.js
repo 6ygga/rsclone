@@ -85,7 +85,7 @@ export default class MultiplicationTable {
       },
       ...buttons,
     );
-    const buttonStart = createDOMElement('button', { class: 'block-setting__button-start' }, 'Старт');
+    const buttonStart = createDOMElement('button', { class: 'block-setting__button-start' }, 'Start');
     const setting = createDOMElement('div', { class: 'block-setting' }, buttonGroup, buttonStart);
 
     MultiplicationTable.buttonGroupSetting = buttons;
