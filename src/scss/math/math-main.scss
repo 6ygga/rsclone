@@ -1,12 +1,18 @@
 .math {
-  padding: 1rem;
+  padding-top: 1rem;
   display: grid;
   height: 100%;
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
 
   @media (max-width: 992px) {
-    grid-template-columns: repeat(1, 100%);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 }
 
@@ -30,6 +36,7 @@
   transition: all 0.5s ease;
 
   @media (max-width: 576px) {
+    width: 16rem;
     height: 20rem;
   }
 
