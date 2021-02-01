@@ -15,7 +15,7 @@ export class MainPageView extends EventEmitter {
   }
 
   createMain() {
-    this.main = createDOMElement('main', { role: 'main', class: 'main container-fluid' });
+    this.main = createDOMElement('main', { role: 'main', class: 'main container' });
     document.body.appendChild(this.main);
   }
 

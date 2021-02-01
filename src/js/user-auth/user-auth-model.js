@@ -16,6 +16,10 @@ class UserAuthModel extends EventEmitter {
     return !!this.token;
   }
 
+  getToken() {
+    return this.token;
+  }
+
   setCredentials(token, user, preference) {
     this.token = token;
     this.user = user;

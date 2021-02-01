@@ -1,4 +1,6 @@
 import words from '../english-words/words-data';
+import { userAuthModel } from '../../user-auth/user-auth-model';
+import { saveStatistics, getStatistics } from '../../services/user-service';
 
 export default class Statistics {
   constructor() {
@@ -7,7 +9,20 @@ export default class Statistics {
 
   init() {
     this.createWrapper();
-    if (JSON.parse(localStorage.getItem('statistics')) == null) {
+    // localStorage.clear();
+    if (userAuthModel.isAuthenticated()) {
+      getStatistics(userAuthModel.getToken()).then((response) => response.json()).then((text) => {
+        // if (JSON.parse(text.data) == null) {
+        if (text == null) {
+          this.clearStatistics();
+        } else {
+          // const mass = JSON.parse(text.data);
+          localStorage.setItem('statistics', text.data);
+        }
+      }).catch((e) => {
+        console.log(e);
+      });
+    } else if (JSON.parse(localStorage.getItem('statistics')) == null) {
       this.clearStatistics();
     }
     this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
@@ -112,6 +127,9 @@ export default class Statistics {
         statisticsObj.errors.push(0);
       }
     }
+    if (userAuthModel.isAuthenticated()) {
+      saveStatistics(JSON.stringify(statisticsObj), userAuthModel.getToken());
+    }
     localStorage.setItem('statistics', JSON.stringify(statisticsObj));
   }
 
@@ -125,6 +143,9 @@ export default class Statistics {
       // this.wrapper.removeChild(container);
       this.wrapper.innerHTML = '';
       this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+      setTimeout(() => {
+        this.sortTable();
+      }, 500);
     }.bind(this);
   }
 }

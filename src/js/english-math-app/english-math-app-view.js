@@ -69,7 +69,7 @@ export default class EnglishMathAppView {
           this.render(englishWords.createPage());
           englishWords.render(words[needCategory]);
         } else {
-          this.render(MainPageView.renderMain());
+          document.location.replace(`${paths.MAIN}`);
         }
         break;
       }

@@ -1,4 +1,6 @@
 import categories from './categories-data';
+import { userAuthModel } from '../../user-auth/user-auth-model';
+import { saveStatistics } from '../../services/user-service';
 
 const audioWord = new Audio();
 
@@ -70,17 +72,20 @@ export default class GameController {
             statistics.errors[i] = 0;
           } else {
             statistics.errors[i] = ((statistics.wrong[i]
-                 / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
+              / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
           }
         } else if (key === 'wrong') {
           statistics.wrong[i] += 1;
           statistics.click[i] += 1;
           statistics.errors[i] = ((statistics.wrong[i]
-               / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
+            / (statistics.correct[i] + statistics.wrong[i])) * 100).toFixed(1);
         }
       }
     }
     localStorage.setItem('statistics', JSON.stringify(statistics));
+    if (userAuthModel.isAuthenticated()) {
+      saveStatistics(JSON.stringify(statistics), userAuthModel.getToken());
+    }
   }
 
   rotateCard() {
@@ -167,7 +172,7 @@ export default class GameController {
       const element = elem;
       element.onclick = () => {
         if (element.childNodes[2].firstElementChild.attributes[0].nodeValue
-           === audioArray[currentNumberOfSound]) {
+          === audioArray[currentNumberOfSound]) {
           element.classList.add('card__correct');
           const imgCorrect = new Image(40, 40);
           imgCorrect.src = 'assets/images/common/correct-icon.png';

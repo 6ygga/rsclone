@@ -114,7 +114,7 @@ export default class englishMusicController {
       this.volumeIcon.classList.add('fa-volume-off');
     } else {
       this.track.volume = localStorage.getItem('volume');
-      this.volumeShow.innerHTML = this.track.volume * 100;
+      this.volumeShow.innerHTML = Math.round(this.track.volume * 100);
       this.volumeIcon.classList.add('fa-volume-up');
       this.volumeIcon.classList.remove('fa-volume-off');
     }
@@ -132,6 +132,7 @@ export default class englishMusicController {
     } else {
       this.pauseSong();
     }
+    this.play.blur();
   }
 
   nextSong() {
@@ -144,6 +145,7 @@ export default class englishMusicController {
       this.loadTrack(this.index);
       this.playSong();
     }
+    this.next.blur();
   }
 
   previousSong() {
@@ -156,11 +158,12 @@ export default class englishMusicController {
       this.loadTrack(this.index);
       this.playSong();
     }
+    this.previous.blur();
   }
 
   volumeChange() {
     this.mute = false;
-    this.volumeShow.innerHTML = this.recentVolume.value;
+    this.volumeShow.innerHTML = Math.round(this.recentVolume.value);
     this.track.volume = this.recentVolume.value / 100;
   }
 
@@ -170,13 +173,16 @@ export default class englishMusicController {
   }
 
   autoPlaySwitch() {
+    this.autoPlay.classList.toggle('block-right__auto-off');
+    this.autoPlay.classList.toggle('block-right__auto-active');
     if (this.autoplay === 1) {
       this.autoplay = 0;
-      this.autoPlay.style.background = 'rgba(255,255,255,0.2)';
+      // this.autoPlay.style.background = 'rgba(255,255,255,0.2)';
     } else {
       this.autoplay = 1;
-      this.autoPlay.style.background = '#FF8A65';
+      // this.autoPlay.style.background = 'rgba(0,255,0,0.2)';
     }
+    this.autoPlay.blur();
   }
 
   finishAudio() {
