@@ -7,6 +7,7 @@
   @extend .h-100;
   @extend .flex-column;
   max-width: 1200px !important;
+  margin-top: 1rem;
 }
 .card-list{
   @extend .card-group;
