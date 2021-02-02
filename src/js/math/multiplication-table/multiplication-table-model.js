@@ -19,14 +19,27 @@ export default class MultiplicationTableModel {
   #progress;
 
   constructor() {
+    const save = this.readeLocaleStorage();
+
     this.#emitter = new EventEmitter();
-    this.#tableRange = [2];
-    this.#listExamples = MultiplicationTableModel.createListOfExamples(this.#tableRange);
-    this.#countExamples = this.#listExamples.length;
-    this.#responseLog = [];
-    this.#result = '';
-    this.#currentExample = this.#listExamples.pop();
-    this.#progress = 100 - Math.ceil((100 / this.#countExamples) * this.#listExamples.length);
+    this.#tableRange = save.tableRange || [2];
+    this.#listExamples = save.listExamples
+      || MultiplicationTableModel.createListOfExamples(this.#tableRange);
+    this.#countExamples = save.countExamples || this.#listExamples.length;
+    this.#responseLog = save.responseLog || [];
+    this.#result = save.result || '';
+    this.#currentExample = save.currentExample || this.#listExamples.pop();
+    this.#progress = save.progress
+      || (100 - Math.ceil((100 / this.#countExamples) * this.#listExamples.length));
+
+    window.addEventListener('unload', () => {
+      const currentURL = document.URL.split('/').pop();
+      if (currentURL === 'multiplication-table') this.writeLocaleStorage();
+    });
+    window.addEventListener('hashchange', (event) => {
+      const oldURL = event.oldURL.split('/').pop();
+      if (oldURL === 'multiplication-table') this.writeLocaleStorage();
+    });
   }
 
   get emitter() {
@@ -130,5 +143,36 @@ export default class MultiplicationTableModel {
     }
 
     return shuffleArray(list);
+  }
+
+  writeLocaleStorage() {
+    const objForSave = {
+      tableRange: this.#tableRange,
+      listExamples: this.#listExamples,
+      countExamples: this.#countExamples,
+      currentExample: this.#currentExample,
+      result: this.#result,
+      responseLog: this.#responseLog,
+      progress: this.#progress,
+    };
+
+    localStorage.removeItem('mathMultiplicationTable');
+    localStorage.setItem('mathMultiplicationTable', JSON.stringify(objForSave));
+  }
+
+  readeLocaleStorage() {
+    const save = JSON.parse(localStorage.getItem('mathMultiplicationTable'));
+
+    if (save) return save;
+
+    return {
+      tableRange: null,
+      listExamples: null,
+      countExamples: null,
+      currentExample: null,
+      result: null,
+      responseLog: null,
+      progress: null,
+    };
   }
 }
