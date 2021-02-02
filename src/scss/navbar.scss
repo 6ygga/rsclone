@@ -1,17 +1,16 @@
-body {
-	font-family: 'Varela Round', sans-serif;
-}
 .form-control {
-	box-shadow: none;
-	font-weight: normal;
-	font-size: 13px;
+	@extend .form-control;
 }
-.navbar {
-	background: #fff;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-bottom: 1px solid #dfe3e8;
-	border-radius: 0;
+.nav-link {
+  font-weight: 700;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.navbar-toggler {
+  @extend .btn;
+  @extend .btn-primary;
 }
 .nav-link img {
 	border-radius: 50%;
@@ -24,10 +23,12 @@ body {
 .navbar .navbar-brand {
 	padding-left: 0;
 	font-size: 20px;
-	padding-right: 50px;
+  padding-right: 50px;
+  font-weight: 600;
 }
 .navbar .navbar-brand b {
-	color: #33cabb;
+  color: #33cabb;
+  font-weight: 900;
 }
 .navbar .form-inline {
 	display: inline-block;
@@ -96,7 +97,6 @@ body {
     margin-bottom: 15px;
     font-size: 13px;
 }
-
 .navbar .user-form {
 	width: 140px;
 	padding: 20px;
@@ -118,27 +118,12 @@ body {
     margin-bottom: 15px;
     font-size: 13px;
 }
-
-.navbar .btn-primary, .navbar .btn-primary:active {
-	color: #fff;
-	background: #33cabb !important;
-	border: none;
-}
-.navbar .btn-primary:hover, .navbar .btn-primary:focus {
-	color: #fff;
-	background: #31bfb1 !important;
-}
-.navbar .social-btn .btn, .navbar .social-btn .btn:hover {
-	color: #fff;
-	margin: 0;
-	padding: 0 !important;
-	font-size: 13px;
-	border: none;
-	transition: all 0.4s;
-	text-align: center;
-	line-height: 34px;
-	width: 47%;
-	text-decoration: none;
+nav {
+  & .btn {
+    @extend .btn;
+    @extend .btn-success;
+    height: 100%;
+  }
 }
 .navbar .social-btn .facebook-btn {
 	background: #507cc0;
