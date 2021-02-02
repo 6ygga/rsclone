@@ -42,7 +42,7 @@
 .block-right__track-image{
   height: 250px;
   @extend .w-50;
-  min-width: 288px;
+  min-width: 320px;
   border-radius: 15px;
   box-shadow: 1px 0px 20px 12px rgba(240,240,240,0.2);
 }
@@ -97,7 +97,7 @@ input[type="range"]::-webkit-slider-thumb{
 .volume__show{
   padding: 8px 12px;
   margin-right: 5px;
-  @extend .bg-secondary;
+  background-color: rgb(114, 114, 114) !important;
   width: 50px;
   @extend .text-center;
 }
@@ -121,7 +121,7 @@ input[type="range"]::-webkit-slider-thumb{
   cursor: pointer;
   outline: none;
   transition: 0.5;
-  @extend .bg-secondary;
+  background-color: rgb(114, 114, 114) !important;
 }
 
 .block-right__song-title{
@@ -165,7 +165,7 @@ input[type="range"]::-webkit-slider-thumb{
   border-radius: 10px;
 }
 .block-right__auto-off{
-  background-color: rgba(255,255,255,0.2) !important;
+  background-color: rgb(114, 114, 114) !important;
 }
 .block-right__auto-active{
   background-color: rgba(255,0,0,0.8) !important;
@@ -257,6 +257,11 @@ input[type="range"]::-webkit-slider-thumb{
 @media(max-height: 870px) {
   .block-right__song-title {
     font-size: 25px;
+  }
+}
+@media(max-width: 400px) {
+  .block-right__track-image {
+    min-width: 280px;
   }
 }
 
