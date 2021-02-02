@@ -29,9 +29,6 @@ export default class Statistics {
       }).catch((e) => {
         console.log(e);
       });
-    } else {
-      // this.renderStatistics(null);
-      this.wrapper.appendChild(warningPage.createPage());
     }
   }
 
@@ -41,8 +38,11 @@ export default class Statistics {
   }
 
   createPage() {
-    this.init();
-    return this.wrapper;
+    if (userAuthModel.isAuthenticated()) {
+      this.init();
+      return this.wrapper;
+    }
+    return warningPage.createPage();
   }
 
   renderStatistics(model) {
