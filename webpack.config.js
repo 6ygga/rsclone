@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -48,12 +49,22 @@ module.exports = {
       filename: 'index.html',
       template: `${__dirname}/index.html`,
       inject: 'body',
+      favicon: path.resolve(__dirname, 'src/assets/images/favicon.ico')
     }),
     // new FaviconsWebpackPlugin(`${__dirname}/src/assets/images/favicon.ico`),
     new CopyWebpackPlugin({
       patterns: [
-        { from: "./src/assets/images", to: "assets/images" },
-        { from: "./src/assets/music", to: "assets/music" },
+        { from: "./src/assets/images",
+          to: "assets/images",
+          globOptions: {
+            ignore: [
+              '**/*.ico',
+            ],
+          },
+           },
+        { from: "./src/assets/music",
+          to: "assets/music",
+        },
       ],
     }),
   ],

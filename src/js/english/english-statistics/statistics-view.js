@@ -27,11 +27,9 @@ export default class Statistics {
           this.sortTable();
         }, 500);
       }).catch((e) => {
+        /* eslint-disable-next-line */
         console.log(e);
       });
-    } else {
-      // this.renderStatistics(null);
-      this.wrapper.appendChild(warningPage.createPage());
     }
   }
 
@@ -41,8 +39,11 @@ export default class Statistics {
   }
 
   createPage() {
-    this.init();
-    return this.wrapper;
+    if (userAuthModel.isAuthenticated()) {
+      this.init();
+      return this.wrapper;
+    }
+    return warningPage.createPage();
   }
 
   renderStatistics(model) {

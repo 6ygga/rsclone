@@ -7,6 +7,7 @@
   @extend .h-100;
   @extend .flex-column;
   max-width: 1200px !important;
+  margin-top: 1rem;
 }
 .card-list{
   @extend .card-group;
@@ -20,9 +21,10 @@
   //@extend .bg-light;
   @extend .btn;
   @extend .btn-primary;
+  perspective: 1000px;
   padding:  2px !important;
   list-style-type: none;
-  transition: 0.2s all ease;
+  transition: 0.5s all ease;
   user-select: none;
 }
 
