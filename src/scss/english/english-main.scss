@@ -2,7 +2,7 @@
   @extend .container;
   @extend .card-group;
   @extend .align-items-center;
-  @extend .justify-content-center;
+  justify-content: space-around;
   @extend .h-100;
   a{
    text-decoration: none !important;
