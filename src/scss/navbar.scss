@@ -61,8 +61,12 @@
 	font-size: 19px;
 }
 .navbar .sign-up-btn {
-	min-width: 110px;
-	max-height: 36px;
+  @extend .btn;
+  @extend .btn-success;
+  height: 100%;
+  font-size: 1rem;
+	// min-width: 110px;
+	// max-height: 36px;
 }
 .navbar .dropdown-menu {
 	color: #999;
@@ -123,6 +127,7 @@ nav {
     @extend .btn;
     @extend .btn-success;
     height: 100%;
+    font-size: 1rem;
   }
 }
 .navbar .social-btn .facebook-btn {

@@ -1,5 +1,7 @@
 import EventEmitter from '../../event-emitter';
 import shuffleArray from '../../shuffle-array';
+import { userAuthModel } from '../../user-auth/user-auth-model';
+import { saveMathStatistics, getMathStatistics } from '../../services/user-service';
 
 export default class MultiplicationTableModel {
   #emitter;
@@ -145,8 +147,29 @@ export default class MultiplicationTableModel {
     return shuffleArray(list);
   }
 
+  saveUserStatistic() {
+    if (!this.#responseLog.length) return;
+
+    const logs = this.#responseLog;
+
+    if (userAuthModel.isAuthenticated()) {
+      getMathStatistics(userAuthModel.getToken())
+        .then((response) => response.json())
+        .then((obj) => {
+          const saveLogs = obj
+            ? JSON.parse(obj.data)
+            : { verbalCounting: [], multiplicationTable: [] };
+
+          saveLogs.multiplicationTable = saveLogs.multiplicationTable.concat(logs);
+
+          saveMathStatistics(JSON.stringify(saveLogs), userAuthModel.getToken());
+        });
+    }
+  }
+
   writeLocaleStorage() {
     const objForSave = {
+      userToken: userAuthModel.getToken(),
       tableRange: this.#tableRange,
       listExamples: this.#listExamples,
       countExamples: this.#countExamples,
