@@ -1,0 +1,8 @@
+.warning-message{
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+  @extend .alert;
+  @extend .alert-warning;
+  font-size: 30px;
+}

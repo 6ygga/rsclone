@@ -1,6 +1,7 @@
 import words from '../english-words/words-data';
 import { userAuthModel } from '../../user-auth/user-auth-model';
 import { saveStatistics, getStatistics } from '../../services/user-service';
+import warningPage from '../../warning-page';
 
 export default class Statistics {
   constructor() {
@@ -19,19 +20,19 @@ export default class Statistics {
           // const mass = JSON.parse(text.data);
           localStorage.setItem('statistics', text.data);
         }
+        setTimeout(() => {
+          this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+        }, 500);
+        setTimeout(() => {
+          this.sortTable();
+        }, 500);
       }).catch((e) => {
         console.log(e);
       });
-    } else if (JSON.parse(localStorage.getItem('statistics')) == null) {
-      this.clearStatistics();
+    } else {
+      // this.renderStatistics(null);
+      this.wrapper.appendChild(warningPage.createPage());
     }
-    setTimeout(() => {
-      this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
-    }, 500);
-
-    setTimeout(() => {
-      this.sortTable();
-    }, 500);
   }
 
   createWrapper() {
