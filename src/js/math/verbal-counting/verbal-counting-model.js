@@ -1,6 +1,8 @@
 import EventEmitter from '../../event-emitter';
 import shuffleArray from '../../shuffle-array';
 import { Actions, Complexity } from '../../constants/math-simulators';
+import { saveMathStatistics, getMathStatistics } from '../../services/user-service';
+import { userAuthModel } from '../../user-auth/user-auth-model';
 
 export default class VerbalCountingModel {
   #emitter;
@@ -101,7 +103,13 @@ export default class VerbalCountingModel {
     const correct = solution === +this.#result;
 
     this.changeProgress();
-    this.writeResponseLogs(correct, this.#currentExample, solution, this.#result);
+    this.writeResponseLogs(
+      correct,
+      this.#currentExample,
+      solution,
+      this.#result,
+      this.#currentAction,
+    );
     this.changeExample();
     this.changeResult('');
   }
@@ -118,7 +126,7 @@ export default class VerbalCountingModel {
     return 0;
   }
 
-  writeResponseLogs(correct, args, solution, response) {
+  writeResponseLogs(correct, args, solution, response, action) {
     if (this.#countExamples === this.#responseLog.length) return;
 
     this.responseLog.push({
@@ -126,6 +134,7 @@ export default class VerbalCountingModel {
       args,
       solution,
       response,
+      action,
     });
 
     this.#emitter.emit('changeResponseLogs');
@@ -192,8 +201,29 @@ export default class VerbalCountingModel {
     return Math.floor(rand);
   }
 
+  saveUserStatistic() {
+    if (!this.#responseLog.length) return;
+
+    const logs = this.#responseLog;
+
+    if (userAuthModel.isAuthenticated()) {
+      getMathStatistics(userAuthModel.getToken())
+        .then((response) => response.json())
+        .then((obj) => {
+          const saveLogs = obj
+            ? JSON.parse(obj.data)
+            : { verbalCounting: [], multiplicationTable: [] };
+
+          saveLogs.verbalCounting = saveLogs.verbalCounting.concat(logs);
+
+          saveMathStatistics(JSON.stringify(saveLogs), userAuthModel.getToken());
+        });
+    }
+  }
+
   writeLocaleStorage() {
     const objForSave = {
+      userToken: userAuthModel.getToken(),
       action: this.#action,
       currentAction: this.#currentAction,
       complexity: this.#complexity,

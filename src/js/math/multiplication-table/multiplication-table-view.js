@@ -104,6 +104,7 @@ export default class MultiplicationTableView {
   }
 
   clickButtonStart() {
+    this.#model.saveUserStatistic();
     this.#emitter.emit('clickButtonStart');
     this.#elements.result.focus();
   }

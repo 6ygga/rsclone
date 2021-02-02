@@ -121,6 +121,7 @@ export default class VerbalCountingView {
   }
 
   clickButtonStart() {
+    this.#model.saveUserStatistic();
     this.#emitter.emit('clickButtonStart');
     this.#elements.result.focus();
   }
