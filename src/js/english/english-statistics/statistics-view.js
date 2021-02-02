@@ -13,11 +13,9 @@ export default class Statistics {
     // localStorage.clear();
     if (userAuthModel.isAuthenticated()) {
       getStatistics(userAuthModel.getToken()).then((response) => response.json()).then((text) => {
-        // if (JSON.parse(text.data) == null) {
         if (text == null) {
           this.clearStatistics();
         } else {
-          // const mass = JSON.parse(text.data);
           localStorage.setItem('statistics', text.data);
         }
         setTimeout(() => {
@@ -43,7 +41,7 @@ export default class Statistics {
       this.init();
       return this.wrapper;
     }
-    this.clearStatistics();
+    // this.clearStatistics();
     return warningPage.createPage();
   }
 

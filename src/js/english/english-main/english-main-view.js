@@ -1,3 +1,7 @@
+import { userAuthModel } from '../../user-auth/user-auth-model';
+import words from '../english-words/words-data';
+import { saveStatistics, getStatistics } from '../../services/user-service';
+
 export default class EnglishMain {
   constructor() {
     this.countCards = 3;
@@ -9,6 +13,26 @@ export default class EnglishMain {
     this.createWordsBlock();
     this.createMusicBlock();
     this.createStatisticsBlock();
+    if (userAuthModel.isAuthenticated()) {
+      getStatistics(userAuthModel.getToken()).then((response) => response.json()).then((text) => {
+        if (text == null) {
+          this.clearStatistics();
+        } else {
+          localStorage.setItem('statistics', text.data);
+        }
+        setTimeout(() => {
+          this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+        }, 500);
+        setTimeout(() => {
+          this.sortTable();
+        }, 500);
+      }).catch((e) => {
+        /* eslint-disable-next-line */
+        console.log(e);
+      });
+    } else {
+      this.clearStatistics();
+    }
   }
 
   createPage() {
@@ -19,6 +43,34 @@ export default class EnglishMain {
   createWrapper() {
     this.wrapper = document.createElement('div');
     this.wrapper.classList.add('english-main__wrapper');
+  }
+
+  clearStatistics() {
+    const keys = Object.keys(words);
+    const statisticsObj = {
+      word: [],
+      translation: [],
+      category: [],
+      click: [],
+      correct: [],
+      wrong: [],
+      errors: [],
+    };
+    for (let i = 0; i < keys.length; i += 1) {
+      for (let j = 0; j < words[keys[i]].length; j += 1) {
+        statisticsObj.word.push(words[keys[i]][j].word);
+        statisticsObj.translation.push(words[keys[i]][j].translation);
+        statisticsObj.category.push(keys[i]);
+        statisticsObj.click.push(0);
+        statisticsObj.correct.push(0);
+        statisticsObj.wrong.push(0);
+        statisticsObj.errors.push(0);
+      }
+    }
+    if (userAuthModel.isAuthenticated()) {
+      saveStatistics(JSON.stringify(statisticsObj), userAuthModel.getToken());
+    }
+    localStorage.setItem('statistics', JSON.stringify(statisticsObj));
   }
 
   createWordsBlock() {
