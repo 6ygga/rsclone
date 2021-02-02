@@ -43,6 +43,7 @@ export default class Statistics {
       this.init();
       return this.wrapper;
     }
+    this.clearStatistics();
     return warningPage.createPage();
   }
 
