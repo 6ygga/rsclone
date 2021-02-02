@@ -61,7 +61,7 @@ export default class EnglishMain {
     <a href = "/#/english/statistics">
       <div class = "card-menu card-statistics">
         <h3>See statistics</h3>
-        <span>%</span>
+        <span class = "card-menu__span">%</span>
         <p>Follow your success</p>
       </div>
     </a>

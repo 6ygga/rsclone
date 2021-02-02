@@ -5,7 +5,8 @@
   @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-center;
-  @extend .bg-info;
+  //@extend .bg-info;
+  @extend .text-dark;
   min-height: 637px;
 }
 
@@ -16,7 +17,7 @@
 
 .musicContainer__logo{
   @extend .position-absolute;
-  @extend .text-white;
+  @extend .text-dark;
   top:10px;
   left:30px;
   font-size: 35px;
@@ -53,14 +54,17 @@ input[type="range"]{
   outline: none;
   height: 2px;
   margin: 0 15px;
+  @extend .bg-dark;
+
 }
 input[type="range"]::-webkit-slider-thumb{
   -webkit-appearance: none;
   height: 15px;
   width: 15px;
-  @extend .bg-white;
+  //@extend .bg-white;
   border-radius: 50%;
   cursor: pointer;
+  @extend .bg-dark;
 }
 
 .musicContainer__block-right input[type="range"]{
@@ -81,6 +85,7 @@ input[type="range"]::-webkit-slider-thumb{
 
 .volume__show{
   font-size:  15px;
+  margin-bottom: 0;
 }
 
 .volume__icon{
@@ -88,10 +93,12 @@ input[type="range"]::-webkit-slider-thumb{
   padding: 8px 12px;
   width: 35px;
   @extend .text-center;
+  @extend .text-dark;
+  @extend .bg-secondary;
 }
 
 .volume__icon:hover {
-  @extend .bg-secondary;
+  @extend .bg-dark;
 }
 
 .volume__show{
@@ -132,7 +139,7 @@ input[type="range"]::-webkit-slider-thumb{
   @extend .text-center;
   transform: translateX(-50%);
   text-transform: capitalize;
-  @extend .text-white;
+  @extend .text-dark;
   font-size: 30px;
 }
 
@@ -194,9 +201,10 @@ input[type="range"]::-webkit-slider-thumb{
   @extend .align-items-center;
   @extend .justify-content-center;
   padding: 8px 12px;
-  @extend .text-white;
+  @extend .text-dark;
   border-radius: 5px;
-  background: rgba(255,255,255,0.2);
+  //background: rgba(255,255,255,0.2);
+  @extend .bg-secondary;
 }
 .block-right__show-song p:nth-child(2){
 	margin: 0 5px;

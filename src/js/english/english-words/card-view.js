@@ -28,9 +28,9 @@ export default class Fragment {
     const image = document.createElement('img');
     image.setAttribute('src', this.model.image);
     image.classList.add('card__image');
-    image.setAttribute('alt', this.model.name);
+    image.setAttribute('alt', this.model.label);
     linkMenu.appendChild(image);
-    title.innerText = this.model.name;
+    title.innerText = this.model.label;
     linkMenu.appendChild(title);
     document.querySelector('.card-list').appendChild(element);
     this.element = element;

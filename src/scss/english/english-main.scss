@@ -14,6 +14,10 @@
  .card-menu {
   @extend .btn;
   @extend .shadow-sm;
+  @extend .d-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
   width: 18rem;
   height: 32rem;
   border-width: 0.1rem 0.5rem 0.5rem 0.1rem;
@@ -74,26 +78,40 @@
 .card-statistics {
   border-color: #AA00FF;
   background-color: #EA80FC;
+  &:hover {
+  background-color: #E040FB;
+  }
 }
 
 .card-learn {
   border-color: #B388FF;
   background-color: #6200EA;
+  &:hover {
+    background-color: #7C4DFF;
+    }
 }
 
 .card-listen {
   border-color: #8C9EFF;
   background-color: #304FFE;
+  &:hover {
+    background-color: #536DFE;
+    }
 }
 .english-main__block:hover{
-  animation: hover-card-main 1s linear infinite;
+  span{
+    animation: hover-card-main 1s linear infinite;
+  }
 }
 
 @keyframes hover-card-main {
   0% {
-   box-shadow: 5px 5px 0 #1e012e;
+    font-size: 14rem;
+  }
+  50% {
+    font-size: 12rem;
   }
   100% {
-    box-shadow: 5px 5px 0  #7e0000;
+    font-size: 14rem;
   }
 }

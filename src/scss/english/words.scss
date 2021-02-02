@@ -17,7 +17,10 @@
 }
 .card-list__card{
   @extend .mb-2;
-  @extend .bg-light;
+  //@extend .bg-light;
+  @extend .btn;
+  @extend .btn-primary;
+  padding:  2px !important;
   list-style-type: none;
   transition: 0.2s all ease;
   user-select: none;
@@ -44,22 +47,22 @@
 }
 
 .card__train-mode{
-  border: 2px solid black;
+  //border: 2px solid black;
 }
 .card__game-mode{
-  border: 2px solid rgb(5, 145, 0);
-  height: 284px;
+  //border: 2px solid rgb(5, 145, 0);
+  //height: 284px;
 }
 
 .card__image{
   @extend .mb-2;
-  width: 255px;
-  height: 255px;
+  width: 253px;
+  height: 253px;
   border-bottom: 1px solid grey;
 }
 
 .card_image-game{
-  height: 280px;
+  height: 276px;
   border-bottom: none;
 }
 
@@ -99,8 +102,10 @@
   @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-center;
+  @extend .btn;
 }
 .game-button,.repeat-button {
+  @extend .btn;
   animation: change-button 2s linear;
   animation: text-button 1s linear infinite;
 }
@@ -137,8 +142,10 @@
 }
 .panel-answer{
   width: 320px;
-  height: 40px;
-  @extend .bg-dark;
+  height: 50px;
+  @extend .alert;
+  @extend .alert-secondary;
+  padding: 0 !important;
   @extend .m-3;
   overflow: hidden;
   user-select: none;
