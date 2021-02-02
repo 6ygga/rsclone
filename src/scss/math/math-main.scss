@@ -42,12 +42,10 @@
   &:hover {
     border-width: 0.1rem 0.25rem 0.25rem 0.1rem;
 
-
     .card-link__body {
       animation-name: example;
       animation-duration: 0.5s;
       animation-iteration-count: infinite;
-
     }
 
     @keyframes example {
