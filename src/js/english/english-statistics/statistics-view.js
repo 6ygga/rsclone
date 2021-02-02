@@ -25,7 +25,10 @@ export default class Statistics {
     } else if (JSON.parse(localStorage.getItem('statistics')) == null) {
       this.clearStatistics();
     }
-    this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+    setTimeout(() => {
+      this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+    }, 500);
+
     setTimeout(() => {
       this.sortTable();
     }, 500);
