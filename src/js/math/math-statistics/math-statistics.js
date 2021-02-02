@@ -21,16 +21,14 @@ export default class MathStatistics {
         const verbalCounting = this.createTable(saveLogs.verbalCounting);
         const multiplicationTable = this.createTable(saveLogs.multiplicationTable);
 
-        verbalCountingStat.appendChild(verbalCounting);
-        multiplicationTableStat.appendChild(multiplicationTable);
+        const tableWrapperV = MathStatistics.createTableWrapper(verbalCounting);
+        const tableWrapperM = MathStatistics.createTableWrapper(multiplicationTable);
+
+        verbalCountingStat.appendChild(tableWrapperV);
+        multiplicationTableStat.appendChild(tableWrapperM);
       });
 
-    const statistics = createDOMElement(
-      'section',
-      { class: 'math-statistics' },
-      multiplicationTableStat,
-      verbalCountingStat,
-    );
+    const statistics = createDOMElement('section', { class: 'math-statistics' }, multiplicationTableStat, verbalCountingStat);
 
     return statistics;
   }
@@ -64,5 +62,9 @@ export default class MathStatistics {
     const table = createDOMElement('table', {}, tr, ...rows);
 
     return table;
+  }
+
+  static createTableWrapper(child) {
+    return createDOMElement('div', { class: 'math-statistics__table-wrapper' }, child);
   }
 }

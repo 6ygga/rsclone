@@ -11,6 +11,15 @@
     grid-template-rows: repeat(2, 1fr);
   }
 
+  &__table-wrapper {
+    height: calc(100vh - 13rem);
+    overflow: auto;
+
+    @media (max-width: 992px) {
+      height: 30rem;
+    }
+  }
+
   &__block-info {
     padding: 0.5rem;
     display: flex;
@@ -29,6 +38,8 @@
         font-size: 1.25rem;
       }
     }
+
+
 
     & table {
       @extend .table;
