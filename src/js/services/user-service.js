@@ -43,3 +43,24 @@ export const getStatistics = async (token) => fetch('https://rsclone-back.heroku
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const saveMathStatistics = async (statistics, token) => fetch('https://rsclone-back.herokuapp.com/userdatam',
+  {
+    method: 'POST',
+    headers: {
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      data: statistics,
+    }),
+  });
+
+export const getMathStatistics = async (token) => fetch('https://rsclone-back.herokuapp.com/userdatam',
+  {
+    method: 'GET',
+    headers: {
+      'content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
