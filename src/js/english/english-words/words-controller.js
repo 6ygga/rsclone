@@ -96,7 +96,7 @@ export default class GameController {
           event.path[1].childNodes[0].classList.toggle('card_title-hidden');
           event.path[1].childNodes[1].classList.toggle('card_title-hidden');
           event.path[2].classList.remove('rotate');
-        }, 300);
+        }, 600);
       });
     });
   }
