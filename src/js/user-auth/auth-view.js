@@ -25,7 +25,6 @@ class AuthView extends EventEmitter {
     const authControls = document.getElementById('authControls');
     clearElement(authControls);
 
-
     const logoutItem = createDOMElement('div', { class: 'dropdown-item', id: 'logout', href: '#' }, 'Logout');
     const dropdownMenu = createDOMElement('div', { class: 'dropdown-menu user-form' }, logoutItem);
 
