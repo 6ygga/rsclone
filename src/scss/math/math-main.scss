@@ -5,6 +5,10 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
 
+  & a {
+    text-decoration: none !important;
+  }
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -33,7 +37,7 @@
   width: 18rem;
   height: 32rem;
   border-width: 0.1rem 0.5rem 0.5rem 0.1rem;
-  transition: all 0.5s ease;
+  transition: all 0.25s ease;
 
   @media (max-width: 576px) {
     width: 16rem;
@@ -42,6 +46,20 @@
 
   &:hover {
     border-width: 0.1rem 0.25rem 0.25rem 0.1rem;
+
+
+    .card-link__body {
+      animation-name: example;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+
+    }
+
+    @keyframes example {
+      0% {transform: rotate(5deg)}
+      50% {transform: rotate(-5deg)}
+      100% {transform: rotate(5deg)}
+    }
   }
 
   & h3 {

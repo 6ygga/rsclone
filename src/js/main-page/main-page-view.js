@@ -157,14 +157,14 @@ export class MainPageView extends EventEmitter {
     const rsLogo = createDOMElement('img', { class: 'rs-logo', src: 'assets/images/rs_school_js.svg', alt: 'RsSchool logo' });
     const rsSchool = createDOMElement('a', { class: 'rs-logo', href: 'https://rs.school/js/' }, rsLogo);
 
-    const copyRight = createDOMElement('div', {}, `CloneJs - ${new Date().getFullYear()}`);
+    const copyRight = createDOMElement('div', { class: 'footer-year' }, `CloneJs - ${new Date().getFullYear()}`);
 
     const authors = createDOMElement('div', { class: 'authors mt-1 mb-1' }, this.createAuthorLink('Aliaksei Yeliseyeu', '6ygga'),
       this.createAuthorLink('Dzmitry Astapenka', 'dmitryastapenko'),
       this.createAuthorLink('Yauheni Marynovich', 'zhenyamarinovich'),
       this.createAuthorLink('Raman Novikau', 'ramannovikau'));
 
-    this.footer = createDOMElement('footer', { class: 'footer mt-3 bg-light' }, rsSchool, copyRight, authors);
+    this.footer = createDOMElement('footer', { class: 'footer' }, rsSchool, copyRight, authors);
     document.body.appendChild(this.footer);
   }
 

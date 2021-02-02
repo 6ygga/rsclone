@@ -24,18 +24,31 @@ export default class VerbalCountingModel {
   #progress;
 
   constructor() {
+    const save = this.readeLocaleStorage();
+
     this.#emitter = new EventEmitter();
     // eslint-disable-next-line prefer-destructuring
-    this.#action = Actions[0];
-    this.#currentAction = this.#action;
+    this.#action = save.action || Actions[0];
+    this.#currentAction = save.currentAction || this.#action;
     // eslint-disable-next-line prefer-destructuring
-    this.#complexity = Complexity[0];
-    this.#listExamples = VerbalCountingModel.createListOfExamples(this.#action, this.#complexity);
-    this.#countExamples = this.#listExamples.length;
-    this.#responseLog = [];
-    this.#result = '';
-    this.#currentExample = this.#listExamples.pop();
-    this.#progress = 100 - Math.ceil((100 / this.#countExamples) * this.#listExamples.length);
+    this.#complexity = save.complexity || Complexity[0];
+    this.#listExamples = save.listExamples
+      || VerbalCountingModel.createListOfExamples(this.#action, this.#complexity);
+    this.#countExamples = save.countExamples || this.#listExamples.length;
+    this.#responseLog = save.responseLog || [];
+    this.#result = save.result || '';
+    this.#currentExample = save.currentExample || this.#listExamples.pop();
+    this.#progress = save.progress
+      || (100 - Math.ceil((100 / this.#countExamples) * this.#listExamples.length));
+
+    window.addEventListener('unload', () => {
+      const currentURL = document.URL.split('/').pop();
+      if (currentURL === 'verbal-counting') this.writeLocaleStorage();
+    });
+    window.addEventListener('hashchange', (event) => {
+      const oldURL = event.oldURL.split('/').pop();
+      if (oldURL === 'verbal-counting') this.writeLocaleStorage();
+    });
   }
 
   get emitter() {
@@ -177,5 +190,40 @@ export default class VerbalCountingModel {
   static randomInteger(min, max) {
     const rand = min + Math.random() * (max - min);
     return Math.floor(rand);
+  }
+
+  writeLocaleStorage() {
+    const objForSave = {
+      action: this.#action,
+      currentAction: this.#currentAction,
+      complexity: this.#complexity,
+      listExamples: this.#listExamples,
+      countExamples: this.#countExamples,
+      currentExample: this.#currentExample,
+      result: this.#result,
+      responseLog: this.#responseLog,
+      progress: this.#progress,
+    };
+
+    localStorage.removeItem('mathVerbalCounting');
+    localStorage.setItem('mathVerbalCounting', JSON.stringify(objForSave));
+  }
+
+  readeLocaleStorage() {
+    const save = JSON.parse(localStorage.getItem('mathVerbalCounting'));
+
+    if (save) return save;
+
+    return {
+      action: null,
+      currentAction: null,
+      complexity: null,
+      listExamples: null,
+      countExamples: null,
+      currentExample: null,
+      result: null,
+      responseLog: null,
+      progress: null,
+    };
   }
 }

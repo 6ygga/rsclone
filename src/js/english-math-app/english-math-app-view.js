@@ -2,6 +2,7 @@ import EventEmitter from '../event-emitter';
 import MathMain from '../math/math-main';
 import MultiplicationTable from '../math/multiplication-table/multiplication-table';
 import VerbalCounting from '../math/verbal-counting/verbal-counting';
+import MathStatistics from '../math/math-statistics/math-statistics';
 import * as paths from '../constants/routes';
 import { clearElement } from '../dom-elements-helpers';
 import { MainPageView } from '../main-page/main-page-view';
@@ -39,6 +40,8 @@ export default class EnglishMathAppView {
       case paths.MULTIPLICATION_TABLE: this.render(MultiplicationTable.createPage());
         break;
       case paths.VERBAL_COUNTING: this.render(VerbalCounting.createPage());
+        break;
+      case paths.MATH_STATISTICS: this.render(MathStatistics.createPage());
         break;
       case paths.ENGLISH: {
         const englishMain = new EnglishMain();
