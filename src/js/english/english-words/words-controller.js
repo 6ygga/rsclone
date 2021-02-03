@@ -102,12 +102,6 @@ export default class GameController {
   }
 
   changeGameMode() {
-    /* this.repeatButton.classList.add('game-button__off');
-    this.repeatButton.classList.remove('game-button__on');
-    this.panelAnswer.classList.add('game-button__off');
-    this.panelAnswer.classList.remove('panel-answer__on');
-    this.switcher.classList.remove('switcher__on');
-    this.switcher.classList.add('switcher__off'); */
     this.switcherBlock.onclick = () => {
       window.getSelection().removeAllRanges();
       if (this.switcher.classList.contains('switcher__off')) {
@@ -224,9 +218,6 @@ export default class GameController {
         item.innerText = 'Great!\n';
       }
       item.innerText += `You make ${this.countMistakes} mistakes`;
-      /* item.innerText += `You learn ${this.countCards - this.countMistakes} words, \n`;
-      item.innerText += `${this.countCards - (this.countCards - this.countMistakes)}
-      words add to repeat`; */
     });
     if (!this.isError) {
       this.audioSuccess.play();
@@ -236,17 +227,6 @@ export default class GameController {
     this.repeatButton.onclick = null;
     modal.classList.remove('finish-modal__close');
     modal.classList.add('finish-modal__open');
-    this.clearElementsAfterGame();
-  }
-
-  clearElementsAfterGame() {
-    setTimeout(() => {
-      this.repeatButton.classList.add('game-button__off');
-      this.repeatButton.classList.remove('game-button__on');
-      this.panelAnswer.classList.add('game-button__off');
-      this.panelAnswer.classList.remove('panel-answer__on');
-      this.panelAnswer.innerHTML = '';
-    }, 2000);
   }
 
   shuffle(array) {

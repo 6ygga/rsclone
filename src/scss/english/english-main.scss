@@ -1,14 +1,16 @@
 .english-main__wrapper {
   @extend .container;
-  @extend .card-group;
+  // @extend .card-group;
+  @extend .d-flex;
   @extend .align-items-center;
   justify-content: space-around;
+  flex-wrap: wrap;
   @extend .h-100;
   a{
    text-decoration: none !important;
   }
   .english-main__block {
-    @extend .m-2;
+    margin-top: 10px;
   }
 }
  .card-menu {
@@ -113,5 +115,16 @@
   }
   100% {
     font-size: 14rem;
+  }
+}
+
+@media(max-width: 576px) {
+  .english-main__wrapper {
+    width: 100%;
+    justify-content: center !important;
+  }
+  .english-main__block {
+    width: 264px;
+    margin: 10px auto !important;
   }
 }

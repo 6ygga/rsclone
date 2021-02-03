@@ -177,10 +177,8 @@ export default class englishMusicController {
     this.autoPlay.classList.toggle('block-right__auto-active');
     if (this.autoplay === 1) {
       this.autoplay = 0;
-      // this.autoPlay.style.background = 'rgba(255,255,255,0.2)';
     } else {
       this.autoplay = 1;
-      // this.autoPlay.style.background = 'rgba(0,255,0,0.2)';
     }
     this.autoPlay.blur();
   }

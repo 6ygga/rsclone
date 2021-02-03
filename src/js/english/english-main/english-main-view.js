@@ -86,7 +86,6 @@ export default class EnglishMain {
     `;
     this.wrapper.appendChild(this.wordsBlock);
   }
-  // <img src='assets/images/menu/music.jpg'>
 
   createMusicBlock() {
     this.musicBlock = document.createElement('div');
@@ -102,7 +101,6 @@ export default class EnglishMain {
     `;
     this.wrapper.appendChild(this.musicBlock);
   }
-  // <img src='assets/images/menu/statistics.jpg'>
 
   createStatisticsBlock() {
     this.statisticsBlock = document.createElement('div');
