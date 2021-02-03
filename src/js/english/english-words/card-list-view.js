@@ -1,7 +1,5 @@
 import Card from './card-view';
-// import words from './words-data';
 import GameController from './words-controller';
-// import categories from './categories-data';
 
 export default class CardList {
   constructor() {
@@ -141,7 +139,7 @@ export default class CardList {
     container.appendChild(info);
     modal.appendChild(container);
   }
-  
+
   shuffle(arr) {
     let j;
     let temp;
