@@ -21,7 +21,7 @@ export class MainPageView extends EventEmitter {
 
   static renderMain() {
     const englishImg = createDOMElement('img', {
-      src: 'assets/images/a8ov_s5nh_171123.jpg',
+      src: 'assets/images/a8ov_s5nh_171123-min.jpg',
       class: 'img-thumbnail mt-3 mx-auto shadow-sm sub-img',
       alt: 'English',
       width: '1100px',
@@ -29,7 +29,7 @@ export class MainPageView extends EventEmitter {
     const englishLink = createDOMElement('a', { href: `${ENGLISH}` }, englishImg);
 
     const mathImg = createDOMElement('img', {
-      src: 'assets/images/h9ij_ddcc_171126.jpg',
+      src: 'assets/images/h9ij_ddcc_171126-min.jpg',
       class: 'img-thumbnail mt-3 mx-auto shadow-sm sub-img',
       alt: 'Math',
       width: '1100px',
