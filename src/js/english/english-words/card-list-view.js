@@ -141,10 +141,10 @@ export default class CardList {
     container.appendChild(info);
     modal.appendChild(container);
     /* eslint-disable-next-line */
-    close.onclick = function () {
+    /* close.onclick = function () {
       modal.classList.remove('finish-modal__open');
       modal.classList.add('finish-modal__close-click');
-    };
+    }; * /
   }
 
   shuffle(arr) {
