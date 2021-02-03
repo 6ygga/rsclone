@@ -171,11 +171,11 @@ export default class GameController {
           const imgCorrect = new Image(40, 40);
           imgCorrect.src = 'assets/images/common/correct-icon.png';
           currentNumberOfSound += 1;
-          audioWord.src = audioArray[currentNumberOfSound];
           setTimeout(() => {
             this.audioCorrect.play();
           }, 200);
           if (currentNumberOfSound < audioArray.length) {
+            audioWord.src = audioArray[currentNumberOfSound];
             setTimeout(() => {
               audioWord.play();
             }, 500);
