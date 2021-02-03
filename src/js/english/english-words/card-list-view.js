@@ -58,9 +58,6 @@ export default class CardList {
       document.querySelector('.wrapper__card-list').removeChild(document.querySelector('.wrapper__card-list').lastChild);
     }
     document.querySelector('.card-list').innerHTML = '';
-    /* const switcher = document.querySelector('.switcher');
-    switcher.classList.remove('switcher__on');
-    switcher.classList.add('switcher__off'); */
     if (model.length > this.countCards) {
       this.shuffle(model);
       this.switcherBlock.classList.remove('game-button__off');
@@ -74,15 +71,6 @@ export default class CardList {
       gameController.init();
     }, 500);
   }
-
-  /* personClick() {
-    if (!this.count) {
-      document.querySelector('.card-list').childNodes[0].addEventListener('click', () => {
-        this.count += 1;
-        this.render(words.сharacteristics);
-      });
-    }
-  } */
 
   createStarGameButton() {
     this.gameButton = document.createElement('div');
@@ -156,7 +144,6 @@ export default class CardList {
     close.onclick = function () {
       modal.classList.remove('finish-modal__open');
       modal.classList.add('finish-modal__close-click');
-      // this.render(categories);
     };
   }
 

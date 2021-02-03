@@ -26,15 +26,10 @@ export default class Statistics {
       this.init();
       return this.wrapper;
     }
-    // this.clearStatistics();
     return warningPage.createPage();
   }
 
   renderStatistics(model) {
-    /* document.querySelector(".card-list").innerHTML = "";
-    if(document.querySelector(".table-container") !== null){
-        document.querySelector(".table-container").innerHTML="";
-    }; */
     this.resetButton = document.createElement('div');
     this.resetButton.classList.add('reset-button');
     this.resetButton.innerText = 'Reset';
@@ -127,9 +122,6 @@ export default class Statistics {
     this.resetButton.onclick = function () {
       localStorage.clear();
       this.clearStatistics();
-      // const wrapper = document.querySelector('.wrapper__card-list');
-      // const container = document.querySelector('.table-container');
-      // this.wrapper.removeChild(container);
       this.wrapper.innerHTML = '';
       this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
       setTimeout(() => {
