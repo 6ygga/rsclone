@@ -141,7 +141,7 @@ export default class CardList {
     container.appendChild(info);
     modal.appendChild(container);
   }
-  
+
   shuffle(arr) {
     let j;
     let temp;
