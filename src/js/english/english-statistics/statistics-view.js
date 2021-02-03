@@ -2,6 +2,7 @@ import words from '../english-words/words-data';
 import { userAuthModel } from '../../user-auth/user-auth-model';
 import { saveStatistics } from '../../services/user-service';
 import warningPage from '../../warning-page';
+import createDOMElement from '../../create-dom-element';
 
 export default class Statistics {
   constructor() {
@@ -67,7 +68,10 @@ export default class Statistics {
       tbody.appendChild(tr);
     }
     table.appendChild(tbody);
-    this.wrapper.appendChild(table);
+
+    const tableWrapper = createDOMElement('div', { class: 'eng-stat-table-wrap' }, table);
+
+    this.wrapper.appendChild(tableWrapper);
     this.resetStatistics.bind(this)();
   }
 
