@@ -11,8 +11,10 @@
 }
 .card-list{
   @extend .card-group;
+  @extend .d-flex;
   @extend .align-items-center;
   @extend .justify-content-center;
+  flex-wrap: wrap;
   @extend .p-0;
   max-width: 1200px;
 }
