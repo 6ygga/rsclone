@@ -1,0 +1,41 @@
+{
+  "name": "rsclone",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "bootswatch": "^4.6.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --history-api-fallback --inline --progress",
+    "eslint": "npx eslint . --fix",
+    "babel": "babel",
+    "build": "npx webpack --mode production",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "html-webpack-plugin": "^4.5.0",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "source-map-loader": "^2.0.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.8.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

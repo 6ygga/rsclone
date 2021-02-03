@@ -1,0 +1,130 @@
+.english-main__wrapper {
+  @extend .container;
+  // @extend .card-group;
+  @extend .d-flex;
+  @extend .align-items-center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  @extend .h-100;
+  a{
+   text-decoration: none !important;
+  }
+  .english-main__block {
+    margin-top: 10px;
+  }
+}
+ .card-menu {
+  @extend .btn;
+  @extend .shadow-sm;
+  @extend .d-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 18rem;
+  height: 32rem;
+  border-width: 0.1rem 0.5rem 0.5rem 0.1rem;
+  transition: all 0.5s ease;
+  @media (max-width: 576px) {
+    width: 16rem;
+    height: 22rem;
+  }
+
+  &:hover {
+    border-width: 0.1rem 0.25rem 0.25rem 0.1rem;
+  }
+
+  & h3 {
+    height: 3rem;
+    font-weight: 900;
+    transition: all 0.25s ease;
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .justify-content-center;
+
+    @media (max-width: 576px) {
+      height: 1.5rem;
+      font-size: 1.3rem;
+    }
+  }
+  & p {
+    font-size: 0.8rem;
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+  span {
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .justify-content-center;
+    @extend .text-white;
+    font-size: 14rem;
+    text-shadow: 0 1px 0 #ccc,
+      0 2px 0 #c9c9c9,
+      0 3px 0 #bbb,
+      0 4px 0 #b9b9b9,
+      0 5px 0 #aaa,
+      0 6px 1px rgba(0,0,0,.1),
+      0 0 5px rgba(0,0,0,.1),
+      0 1px 3px rgba(0,0,0,.3),
+      0 3px 5px rgba(0,0,0,.2),
+      0 5px 10px rgba(0,0,0,.25),
+      0 10px 10px rgba(0,0,0,.2),
+      0 20px 20px rgba(0,0,0,.15);
+    @media (max-width: 576px) {
+      font-size: 12rem;
+    }
+
+  }
+}
+
+.card-statistics {
+  border-color: #AA00FF;
+  background-color: #EA80FC;
+  &:hover {
+  background-color: #E040FB;
+  }
+}
+
+.card-learn {
+  border-color: #B388FF;
+  background-color: #6200EA;
+  &:hover {
+    background-color: #7C4DFF;
+    }
+}
+
+.card-listen {
+  border-color: #8C9EFF;
+  background-color: #304FFE;
+  &:hover {
+    background-color: #536DFE;
+    }
+}
+.english-main__block:hover{
+  span{
+    animation: hover-card-main 1s linear infinite;
+  }
+}
+
+@keyframes hover-card-main {
+  0% {
+    font-size: 14rem;
+  }
+  50% {
+    font-size: 12rem;
+  }
+  100% {
+    font-size: 14rem;
+  }
+}
+
+@media(max-width: 576px) {
+  .english-main__wrapper {
+    width: 100%;
+    justify-content: center !important;
+  }
+  .english-main__block {
+    width: 264px;
+    margin: 10px auto !important;
+  }
+}

@@ -1,0 +1,53 @@
+.footer {
+  @extend .navbar;
+  @extend .navbar-dark;
+  @extend .bg-dark;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  column-gap: 3rem;
+  font-weight: 600;
+  color: white;
+
+  & a {
+    background: #f0f0f0;
+  }
+}
+
+.rs-logo {
+  height: 2rem !important;
+  background: none !important;
+}
+
+.footer-year {
+  margin: 0 0.25rem;
+}
+
+.authors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  font-size: .8rem;
+}
+
+.github-logo{
+  width: 1rem;
+}
+
+.author-link{
+  @extend .btn;
+  @extend .btn-secondary;
+  @extend .btn-sm;
+  margin: 0.125rem;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+}
