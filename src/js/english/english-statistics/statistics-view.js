@@ -1,6 +1,6 @@
 import words from '../english-words/words-data';
 import { userAuthModel } from '../../user-auth/user-auth-model';
-import { saveStatistics, getStatistics } from '../../services/user-service';
+import { saveStatistics } from '../../services/user-service';
 import warningPage from '../../warning-page';
 
 export default class Statistics {
@@ -10,25 +10,10 @@ export default class Statistics {
 
   init() {
     this.createWrapper();
-    // localStorage.clear();
-    if (userAuthModel.isAuthenticated()) {
-      getStatistics(userAuthModel.getToken()).then((response) => response.json()).then((text) => {
-        if (text == null) {
-          this.clearStatistics();
-        } else {
-          localStorage.setItem('statistics', text.data);
-        }
-        setTimeout(() => {
-          this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
-        }, 500);
-        setTimeout(() => {
-          this.sortTable();
-        }, 500);
-      }).catch((e) => {
-        /* eslint-disable-next-line */
-        console.log(e);
-      });
-    }
+    this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
+    setTimeout(() => {
+      this.sortTable();
+    }, 500);
   }
 
   createWrapper() {

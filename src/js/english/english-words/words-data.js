@@ -97,7 +97,7 @@ const words = {
       audioSrc: 'assets/music/person/young.mp3',
     },
     {
-      word: 'I',
+      word: 'i',
       translation: 'я',
       image: 'assets/images/person/i-min.jpg',
       audioSrc: 'assets/music/person/i.mp3',

@@ -43,7 +43,7 @@ export default class GameController {
         const element = elem;
         element.onclick = () => {
           element.childNodes[2].play();
-          this.changeStatistics(element.childNodes[1].innerText, 'click');
+          this.changeStatistics(element.childNodes[1].innerText.toLowerCase(), 'click');
         };
       });
     }

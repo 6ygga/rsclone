@@ -13,6 +13,10 @@ export default class EnglishMain {
     this.createWordsBlock();
     this.createMusicBlock();
     this.createStatisticsBlock();
+    this.initStatistics();
+  }
+
+  initStatistics() {
     if (userAuthModel.isAuthenticated()) {
       getStatistics(userAuthModel.getToken()).then((response) => response.json()).then((text) => {
         if (text == null) {
@@ -20,15 +24,9 @@ export default class EnglishMain {
         } else {
           localStorage.setItem('statistics', text.data);
         }
-        setTimeout(() => {
-          this.renderStatistics(JSON.parse(localStorage.getItem('statistics')));
-        }, 500);
-        setTimeout(() => {
-          this.sortTable();
-        }, 500);
       }).catch((e) => {
         /* eslint-disable-next-line */
-        console.log(e);
+          console.log(e);
       });
     } else {
       this.clearStatistics();
